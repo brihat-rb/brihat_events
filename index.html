@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Laila&display=swap" rel="stylesheet">
+    <title>List of Events (Compiled by Brihat Ratna Bajracharya)</title>
+</head>
+<body>
+    <div id="top">
+        <div id="compiled_by">Compiled by: Brihat Ratna Bajracharya</div>
+        <div id="option_div">
+            <div class="nav_div" id="national_events" onclick="show_content(1);">National Events</div>
+            <div class="nav_div" id="lunar_events" onclick="show_content(2);">Lunar Events</div>
+            <div class="nav_div" id="holiday_events" onclick="show_content(3);">Public Holidays</div>
+            <div class="nav_div" id="international_events" onclick="show_content(4);">International Events</div>
+        </div>
+    </div>
+    <div id = "year_select" class="public">
+        <label for="year">वि. सं. </label> 
+        <select name="year" id="year" onchange="show_content();">
+            <option value="2076">२०७६</option>
+            <option value="2077">२०७७</option>
+            <option value="2078">२०७८</option>
+            <option value="2079" selected>२०७९</option>
+            <option value="2080">२०८०</option>
+        </select>
+    </div>
+    <div id="main_div"></div><hr />
+    <div id="compiled_by">Compiled by: Brihat Ratna Bajracharya</div>
+    <script type="text/javascript" src="./constants.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
