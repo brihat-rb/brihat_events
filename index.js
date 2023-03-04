@@ -89,8 +89,8 @@ function show_lunar_event() {
         if (lunar_event_req.status === 200) {
             console.info('Lunar Events Fetched');
             
-            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span>';
-            span_html += '<span style="color:darkblue">&#9724; - विशेष बिदा (Special Holiday)</span><br />';
+            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday) (जम्माः <span id="national_holiday_count"></span> दिन)</span>';
+            span_html += '<span style="color:darkblue">&#9724; - विशेष बिदा (Special Holiday) (जम्माः <span id="special_holiday_count"></span> दिन)</span><br />';
             
             var index = 1;
             for(var month = 0; month < 12; month++) {
@@ -136,7 +136,12 @@ function show_lunar_event() {
             }
             
             document.getElementById("main_div").innerHTML = span_html;
-            add_public_holiday(query_year);   
+            add_public_holiday(query_year);  
+            
+            var national_holiday_count = document.getElementsByClassName("national").length;
+            var special_holiday_count = document.getElementsByClassName("specific").length;
+            document.getElementById("national_holiday_count").innerHTML = arabic_number_to_nepali(national_holiday_count);
+            document.getElementById("special_holiday_count").innerHTML = arabic_number_to_nepali(special_holiday_count);
         }
         else {
             console.warn('Cannot fetch Lunar Events Data');
@@ -159,8 +164,8 @@ function show_public_holiday() {
         public_holidays = JSON.parse(this.response);
         if (public_holiday_req.status === 200) {
             console.info('Public Holiday Fetched');
-            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span>';
-            span_html += '<span style="color:darkblue">&#9724; -  विशेष बिदा (Special Holiday)</span><br />';
+            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday) (जम्माः <span id="national_holiday_count"></span> दिन)</span>';
+            span_html += '<span style="color:darkblue">&#9724; -  विशेष बिदा (Special Holiday) (जम्माः <span id="special_holiday_count"></span> दिन)</span><br />';
             var public_holidays_keys_list = Object.keys(public_holidays[query_year]).slice(1,-1).sort();
             var index = 1;
             public_holidays_keys_list.forEach(key => {
@@ -180,6 +185,10 @@ function show_public_holiday() {
                 index++;
             });
             document.getElementById("main_div").innerHTML = span_html;
+            var national_holiday_count = document.getElementsByClassName("national").length / 2;
+            var special_holiday_count = document.getElementsByClassName("specific").length / 2;
+            document.getElementById("national_holiday_count").innerHTML = arabic_number_to_nepali(national_holiday_count);
+            document.getElementById("special_holiday_count").innerHTML = arabic_number_to_nepali(special_holiday_count);
         }
         else {
             console.warn('Cannot fetch Public Holiday Data');
