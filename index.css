@@ -22,9 +22,17 @@ hr {
     font-size: x-large;
 }
 
+#option_div:hover {
+    cursor: pointer;
+}
+
 .nav_div {
     text-align: center;
     width: 100%;
+}
+
+.nav_div:hover {
+    font-weight: bold;
 }
 
 .public {
@@ -57,13 +65,28 @@ hr {
     line-height: 1.75;
     font-size: 20px;
     columns: 2;
+    padding: 0 5px 0 5px;
     white-space: nowrap;
+    overflow: scroll;
+    scrollbar-width: none;
     transition: all ease-in 0.5s;
     background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
 }
 
 #main_div > span:hover {
     font-weight: bold;
+    cursor: all-scroll;
+}
+
+#main_div > span {
+    scrollbar-width: none;
+    overflow-y: scroll;
+    display: block;
+}
+
+.pakshya {
+    font-size: x-small;
+    vertical-align: middle;
 }
 
 .national {
@@ -100,5 +123,16 @@ hr {
         line-height: 1.75;
         font-size: 14px;
         columns: 1;
+    }
+
+    .pakshya {
+        display: none;
+    }
+}
+
+@media print {
+    @page {
+        size: 297mm 210mm;
+        margin: 5mm;
     }
 }

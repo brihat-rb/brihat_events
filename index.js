@@ -49,17 +49,17 @@ function show_national_event() {
             nat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 nat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span>&ensp;[" + arabic_number_to_nepali(index) + "] ";
+                    span_html += "<span>[" + arabic_number_to_nepali(index) + "] ";
                     span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " गते - ";
                     span_html += event;
-                    span_html += "</span><br />";
+                    span_html += "</span>";
                 });
 
                 nat_events["data"][key][0].split("/").forEach(event => {
-                    span_html += "<span>&ensp;[" + index + "] ";
+                    span_html += "<span>[" + index + "] ";
                     span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
-                    span_html += "</span><br />";
+                    span_html += "</span>";
                 });
                 span_html += "<br />";
                 index++;
@@ -89,8 +89,8 @@ function show_lunar_event() {
         if (lunar_event_req.status === 200) {
             console.info('Lunar Events Fetched');
             
-            span_html = '&ensp;<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span><br />';
-            span_html += '&ensp;<span style="color:darkblue">&#9724; - विशेष बिदा (Special Holiday)</span><br /><br />';
+            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span>';
+            span_html += '<span style="color:darkblue">&#9724; - विशेष बिदा (Special Holiday)</span><br />';
             
             var index = 1;
             for(var month = 0; month < 12; month++) {
@@ -98,16 +98,18 @@ function show_lunar_event() {
                     day_event_array = lunar_events["data"][month][date];
                     var has_events = false;
                     if(day_event_array.lunar_event_one != "") {
-                        span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">&ensp;[" + arabic_number_to_nepali(index++) + "] ";
-                        span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते - ";
+                        span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
+                        span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                        span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                         span_html += day_event_array.lunar_event_one;
                         has_events = true;
                     }
                     if(day_event_array.lunar_event_two != "") {
                         if(day_event_array.lunar_event_one == "") {
-                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">&ensp;[" + arabic_number_to_nepali(index++) + "] ";
-                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते - ";
-                            span_html += day_event_array.lunar_event_two;
+                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
+                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                        span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
+                        span_html += day_event_array.lunar_event_two;
                         }
                         else {
                             span_html += ", " + day_event_array.lunar_event_two;
@@ -116,9 +118,10 @@ function show_lunar_event() {
                     }
                     if(day_event_array.lunar_event_three != "") {
                         if(day_event_array.lunar_event_one == "" && day_event_array.lunar_event_two == "") {
-                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">&ensp;[" + arabic_number_to_nepali(index++) + "] ";
-                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते - ";
-                            span_html += day_event_array.lunar_event_three;
+                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
+                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                        span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
+                        span_html += day_event_array.lunar_event_three;
                         }
                         else {
                             span_html += ", " + day_event_array.lunar_event_three;
@@ -126,7 +129,7 @@ function show_lunar_event() {
                         has_events = true;
                     }
                     if(has_events) {
-                        span_html += "</span><br />";
+                        span_html += "</span>";
                     }
                 }
                 span_html += "<br />";
@@ -156,23 +159,23 @@ function show_public_holiday() {
         public_holidays = JSON.parse(this.response);
         if (public_holiday_req.status === 200) {
             console.info('Public Holiday Fetched');
-            span_html = '&ensp;<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span><br />';
-            span_html += '&ensp;<span style="color:darkblue">&#9724; -  विशेष बिदा (Special Holiday)</span><br /><br />';
+            span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday)</span>';
+            span_html += '<span style="color:darkblue">&#9724; -  विशेष बिदा (Special Holiday)</span><br />';
             var public_holidays_keys_list = Object.keys(public_holidays[query_year]).slice(1,-1).sort();
             var index = 1;
             public_holidays_keys_list.forEach(key => {
                 key_list = key.split("-");
                 span_html += "<span class=" + public_holidays[query_year][key][1] + ">";
-                span_html += "&ensp;[" + arabic_number_to_nepali(index) + "] ";
+                span_html += "[" + arabic_number_to_nepali(index) + "] ";
                 span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " गते - ";
                 span_html += public_holidays[query_year][key][3];
-                span_html += "</span><br />";
+                span_html += "</span>";
 
                 span_html += "<span class=" + public_holidays[query_year][key][1] + ">";
-                span_html += "&ensp;[" + index + "] ";
+                span_html += "[" + index + "] ";
                 span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                 span_html += public_holidays[query_year][key][0];
-                span_html += "</span><br /><br />";
+                span_html += "</span><br />";
 
                 index++;
             });
@@ -201,17 +204,17 @@ function show_international_event() {
             internat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 internat_events["data"][key][0].split("/").forEach(event => {
-                    span_html += "<span>&ensp;[" + index + "] ";
+                    span_html += "<span>[" + index + "] ";
                     span_html += AD_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
-                    span_html += "</span><br />";
+                    span_html += "</span>";
                 });
 
                 internat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span>&ensp;[" + arabic_number_to_nepali(index) + "] ";
+                    span_html += "<span>[" + arabic_number_to_nepali(index) + "] ";
                     span_html += AD_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " - ";
                     span_html += event;
-                    span_html += "</span><br />";
+                    span_html += "</span>";
                 });
                 span_html += "<br />";
                 
