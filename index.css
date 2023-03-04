@@ -10,6 +10,10 @@
     display: none;
 }
 
+html, body {
+    scrollbar-width: none;
+}
+
 #compiled_by_header, #compiled_by_footer {
     text-align: center;
 }
@@ -47,6 +51,12 @@ hr {
     background-color: honeydew;
 }
 
+#year_select {
+    border-left: 2px dotted darkcyan;
+    border-right: 2px dotted darkcyan;
+    background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+}
+
 #year {
     height: 35px;
     width: 75px;
@@ -74,6 +84,8 @@ hr {
     overflow: scroll;
     scrollbar-width: none;
     transition: all ease-in 0.5s;
+    border-left: 2px dotted darkcyan;
+    border-right: 2px dotted darkcyan;
     background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
 }
 
@@ -119,6 +131,21 @@ hr {
 
 .not_selected {
     border-bottom: 2px solid darkcyan;
+}
+
+#top {
+    position: sticky;
+    top: 0px;
+    background-color: white;
+    z-index: 10;
+}
+
+#compiled_by_footer {
+    position: sticky;
+    bottom: 0px;
+    background-color: white;
+    z-index: 10;
+    border-top: 2px solid darkcyan;
 }
 
 @media screen and (max-width: 600px) {
