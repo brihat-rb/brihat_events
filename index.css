@@ -6,7 +6,7 @@
     user-select: none;
 }
 
-#compiled_by {
+#compiled_by_header, #compiled_by_footer {
     text-align: center;
 }
 
