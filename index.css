@@ -14,6 +14,31 @@ html, body {
     scrollbar-width: none;
 }
 
+#loading {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-color: #fff;
+    z-index: 99;
+  }
+  
+  #loading_anim {
+    height: 25%;
+    line-height: 1000%;
+  }
+  
+  #loading_title {
+    padding-top: 10px;
+    font-size: xx-large;
+  }
+
 #compiled_by_header, #compiled_by_footer {
     text-align: center;
 }

@@ -29,7 +29,12 @@
 
     <title>List of Events | Brihat Ratna Bajracharya</title>
 </head>
-<body>
+<body onload="loading_anim();">
+    <div id="loading">
+        <img id="loading_anim" src="./loading_anim.svg" alt="Populating Events ..." />
+        <span id="loading_title">Brihat Events</span>
+        <noscript>Please enable JavaScript and reload</noscript>
+      </div>
     <div id="top">
         <div id="compiled_by_header">Compiled by: Brihat Ratna Bajracharya</div>
         <div id="option_div">
@@ -51,6 +56,11 @@
     </div>
     <div id="main_div"></div>
     <div id="compiled_by_footer">Compiled by: Brihat Ratna Bajracharya</div>
+    <script>
+        function loading_anim() {
+            document.getElementById('loading').style.display = "none";
+        }
+    </script>
     <script type="text/javascript" src="./constants.js"></script>
     <script type="text/javascript" src="./index.js"></script>
 </body>
