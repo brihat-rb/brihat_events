@@ -25,19 +25,19 @@ html, body {
     top: 0;
     left: 0;
     text-align: center;
-    background-color: #fff;
+    background-color: honeydew;
     z-index: 99;
-  }
-  
-  #loading_anim {
+}
+
+#loading_anim {
     height: 25%;
     line-height: 1000%;
-  }
-  
-  #loading_title {
+}
+
+#loading_title {
     padding-top: 10px;
     font-size: xx-large;
-  }
+}
 
 #compiled_by_header, #compiled_by_footer {
     text-align: center;
@@ -80,6 +80,7 @@ hr {
     border-left: 2px dotted darkcyan;
     border-right: 2px dotted darkcyan;
     background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+    background-attachment: fixed;
 }
 
 #year {
@@ -89,6 +90,8 @@ hr {
     font-size: larger;
     background-color: honeydew;
     border: none;
+    background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+    background-attachment: fixed;
 }
 
 #year:hover {
@@ -112,6 +115,7 @@ hr {
     border-left: 2px dotted darkcyan;
     border-right: 2px dotted darkcyan;
     background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+    background-attachment: fixed;
 }
 
 #main_div > span:hover {
@@ -145,11 +149,10 @@ hr {
     border-bottom-right-radius: 0;
     font-weight: bolder;
     transition: 0.2s;
-    background-color: honeydew;
     background: url('https://calendar.brihatrb.com.np/assets/logo.svg');
     background-size: auto 100%;
     background-blend-mode: color-burn;
-    background-color: mintcream;
+    background-color: honeydew;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -197,8 +200,14 @@ hr {
         margin: 5mm;
     }
 
+    #year_select, #year {
+        background: honeydew;
+    }
+
     #main_div {
         columns: 3;
+        background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.3"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+        background-attachment: scroll;
     }
 
     .pakshya {
