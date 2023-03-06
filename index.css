@@ -206,11 +206,26 @@ hr {
 
     #main_div {
         columns: 3;
-        background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.3"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+        background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.3"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: darkgray;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
         background-attachment: scroll;
     }
 
     .pakshya {
         display: none;
+    }
+
+    #compiled_by_header::after, #compiled_by_footer::before {
+        content: "https://events.brihatrb.com.np";
+    }
+
+    #compiled_by_header::before {
+        content: "Events and Holidays";
+    }
+
+    #compiled_by_header, #compiled_by_footer {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        text-align: center;
     }
 }
