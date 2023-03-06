@@ -108,8 +108,8 @@ function show_lunar_event() {
                         if(day_event_array.lunar_event_one == "") {
                             span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
                             span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
-                        span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
-                        span_html += day_event_array.lunar_event_two;
+                            span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
+                            span_html += day_event_array.lunar_event_two;
                         }
                         else {
                             span_html += ", " + day_event_array.lunar_event_two;
@@ -120,8 +120,8 @@ function show_lunar_event() {
                         if(day_event_array.lunar_event_one == "" && day_event_array.lunar_event_two == "") {
                             span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
                             span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
-                        span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
-                        span_html += day_event_array.lunar_event_three;
+                            span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
+                            span_html += day_event_array.lunar_event_three;
                         }
                         else {
                             span_html += ", " + day_event_array.lunar_event_three;
@@ -132,7 +132,9 @@ function show_lunar_event() {
                         span_html += "</span>";
                     }
                 }
-                span_html += "<br />";
+                if(month != 11) {
+                    span_html += "<br />";
+                }
             }
             
             document.getElementById("main_div").innerHTML = span_html;
