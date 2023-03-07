@@ -150,8 +150,6 @@ function show_lunar_event() {
         }
     }
     lunar_event_req.send();
-
-    
 }
 
 function show_public_holiday() {
@@ -256,17 +254,20 @@ function show_content(option=view) {
             document.getElementById("national_events").classList.add("selected");
             document.getElementById("national_events").classList.remove("not_selected");
             show_national_event();
+            view = 1;
             break;
         case 2:
             document.getElementById("lunar_events").classList.add("selected");
             document.getElementById("lunar_events").classList.remove("not_selected");
             document.getElementById("year_select").style.display = "block";
             show_lunar_event();
+            view = 2;
             break;
         case 4:
             document.getElementById("international_events").classList.add("selected");
             document.getElementById("international_events").classList.remove("not_selected");
             show_international_event();
+            view = 4;
             break;
         case 3:
         default:
@@ -274,6 +275,7 @@ function show_content(option=view) {
             document.getElementById("holiday_events").classList.remove("not_selected");
             document.getElementById("year_select").style.display = "block";
             show_public_holiday();
+            view = 3;
     }
 }
 
