@@ -37,6 +37,7 @@ html, body {
 #loading_title {
     padding-top: 10px;
     font-size: xx-large;
+    color: darkcyan;
 }
 
 #compiled_by_header, #compiled_by_footer {
@@ -149,7 +150,7 @@ hr {
     border-bottom-right-radius: 0;
     font-weight: bolder;
     transition: 0.2s;
-    background: url('https://calendar.brihatrb.com.np/assets/logo.svg');
+    background: url('../assets/brihat_events_logo.svg');
     background-size: auto 100%;
     background-blend-mode: color-burn;
     background-color: honeydew;
