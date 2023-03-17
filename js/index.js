@@ -182,6 +182,9 @@ function show_public_holiday() {
             span_html = '<span style="color:crimson">&#9724; - सार्वजनिक बिदा (Public Holiday) (जम्माः <span id="national_holiday_count"></span> दिन)</span>';
             span_html += '<span style="color:darkblue">&#9724; -  विशेष बिदा (Special Holiday) (जम्माः <span id="special_holiday_count"></span> दिन)</span><br />';
             var public_holidays_keys_list = Object.keys(public_holidays[query_year]).slice(1,-1).sort();
+            if (query_year == 2080) {
+                public_holidays_keys_list = Object.keys(public_holidays[query_year]).slice(1,-2).sort();
+            }
             var index = 1;
             public_holidays_keys_list.forEach(key => {
                 key_list = key.split("-");
@@ -204,6 +207,14 @@ function show_public_holiday() {
             var special_holiday_count = document.getElementsByClassName("specific").length / 2;
             document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
             document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
+            var special_note_div = document.getElementById("special_note");
+            if (query_year == 2080) {
+                special_note_div.innerHTML = "<span>नोटः- </span>" + public_holidays[query_year]["special_note"].toString().replace(/,\s([^,]+)$/, ' र $1') + '<br />';
+            }
+            special_note_div.style.display = "block";
+            if(special_note_div.innerHTML == "") {
+                special_note_div.style.display = "none";
+            }
         }
         else {
             console.warn('Cannot fetch Public Holiday Data');

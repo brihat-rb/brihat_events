@@ -129,6 +129,22 @@ hr {
     display: block;
 }
 
+#special_note {
+    padding: 5px;
+    color: darkcyan;
+    font-size: 17px;
+    line-height: 1.75;
+    text-justify: inter-word;
+    text-align: justify;
+    border-left: 2px dotted darkcyan;
+    border-right: 2px dotted darkcyan;
+    background: url('data:image/svg+xml; utf8, <svg style="transform:rotate(-5deg)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill-opacity="0.1"><style>.svgtext {font: italic 24px serif;font-weight: lighter; fill: black;}</style><text x="0" y="30" class="svgtext">Compiled by BRIHAT</text></svg>') 0 0/200px 45px honeydew;
+}
+
+#special_note > span{
+    font-weight: bold;
+}
+
 .pakshya {
     font-size: x-small;
     vertical-align: middle;
