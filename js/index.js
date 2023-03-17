@@ -208,6 +208,7 @@ function show_public_holiday() {
             document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
             document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
             var special_note_div = document.getElementById("special_note");
+            special_note_div.innerHTML == "";
             if (query_year == 2080) {
                 special_note_div.innerHTML = "<span>नोटः- </span>" + public_holidays[query_year]["special_note"].toString().replace(/,\s([^,]+)$/, ' र $1') + '<br />';
             }
