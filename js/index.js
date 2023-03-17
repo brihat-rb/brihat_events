@@ -276,6 +276,7 @@ function show_content(option=view) {
     document.getElementById("holiday_events").classList.add("not_selected");
     document.getElementById("international_events").classList.add("not_selected");
     document.getElementById("year_select").style.display = "none";
+    document.getElementById("special_note").style.display = "none";
     switch(option) {
         case 1:
             document.getElementById("national_events").classList.add("selected");
