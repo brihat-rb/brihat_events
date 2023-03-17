@@ -9,6 +9,21 @@ function arabic_number_to_nepali(number){
     return nepali_number;
 }
 
+function arabic_numbertext_to_nepali(number){
+    // converts given number to devanagari number
+    number = number.toString();
+    let nepali_number_text = "";
+    for(let i = 0; i < number.length; i++) {
+        if(["1","2","3","4","5","6","7","8","9","0"].includes(number[i])){
+          nepali_number_text += NEPALI_DIGITS[parseInt(number.charAt(i))];
+        }
+        else {
+          nepali_number_text += number.charAt(i);
+        }
+    }
+    return nepali_number_text;
+}
+
 function add_public_holiday(query_year) {
     var public_holidays = JSON.parse("{}");
     var public_holiday_req = new XMLHttpRequest();
@@ -49,8 +64,8 @@ function show_national_event() {
             nat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 nat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span>[" + arabic_number_to_nepali(index) + "] ";
-                    span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " गते - ";
+                    span_html += "<span>[" + arabic_numbertext_to_nepali(index) + "] ";
+                    span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
                     span_html += event;
                     span_html += "</span>";
                 });
@@ -98,16 +113,16 @@ function show_lunar_event() {
                     day_event_array = lunar_events["data"][month][date];
                     var has_events = false;
                     if(day_event_array.lunar_event_one != "") {
-                        span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
-                        span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                        span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
+                        span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
                         span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                         span_html += day_event_array.lunar_event_one;
                         has_events = true;
                     }
                     if(day_event_array.lunar_event_two != "") {
                         if(day_event_array.lunar_event_one == "") {
-                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
-                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
+                            span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
                             span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                             span_html += day_event_array.lunar_event_two;
                         }
@@ -118,8 +133,8 @@ function show_lunar_event() {
                     }
                     if(day_event_array.lunar_event_three != "") {
                         if(day_event_array.lunar_event_one == "" && day_event_array.lunar_event_two == "") {
-                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_number_to_nepali(index++) + "] ";
-                            span_html += BS_MONTHS_NEP[month] + " " + arabic_number_to_nepali(parseInt(date + 1)) + " गते";
+                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
+                            span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
                             span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                             span_html += day_event_array.lunar_event_three;
                         }
@@ -142,8 +157,8 @@ function show_lunar_event() {
             
             var national_holiday_count = document.getElementsByClassName("national").length;
             var special_holiday_count = document.getElementsByClassName("specific").length;
-            document.getElementById("national_holiday_count").innerHTML = arabic_number_to_nepali(national_holiday_count);
-            document.getElementById("special_holiday_count").innerHTML = arabic_number_to_nepali(special_holiday_count);
+            document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
+            document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
         }
         else {
             console.warn('Cannot fetch Lunar Events Data');
@@ -171,8 +186,8 @@ function show_public_holiday() {
             public_holidays_keys_list.forEach(key => {
                 key_list = key.split("-");
                 span_html += "<span class=" + public_holidays[query_year][key][1] + ">";
-                span_html += "[" + arabic_number_to_nepali(index) + "] ";
-                span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " गते - ";
+                span_html += "[" + arabic_numbertext_to_nepali(index) + "] ";
+                span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
                 span_html += public_holidays[query_year][key][3];
                 span_html += "</span>";
 
@@ -187,8 +202,8 @@ function show_public_holiday() {
             document.getElementById("main_div").innerHTML = span_html;
             var national_holiday_count = document.getElementsByClassName("national").length / 2;
             var special_holiday_count = document.getElementsByClassName("specific").length / 2;
-            document.getElementById("national_holiday_count").innerHTML = arabic_number_to_nepali(national_holiday_count);
-            document.getElementById("special_holiday_count").innerHTML = arabic_number_to_nepali(special_holiday_count);
+            document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
+            document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
         }
         else {
             console.warn('Cannot fetch Public Holiday Data');
@@ -220,8 +235,8 @@ function show_international_event() {
                 });
 
                 internat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span>[" + arabic_number_to_nepali(index) + "] ";
-                    span_html += AD_MONTHS_NEP[key_list[0] - 1] + " " + arabic_number_to_nepali(parseInt(key_list[1])) + " - ";
+                    span_html += "<span>[" + arabic_numbertext_to_nepali(index) + "] ";
+                    span_html += AD_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " - ";
                     span_html += event;
                     span_html += "</span>";
                 });
