@@ -208,12 +208,11 @@ function show_public_holiday() {
             document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
             document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
             var special_note_div = document.getElementById("special_note");
-            special_note_div.innerHTML == "";
-            if (query_year == 2080) {
+            if (public_holidays[query_year].hasOwnProperty("special_note")) {
                 special_note_div.innerHTML = "<span>नोटः- </span>" + public_holidays[query_year]["special_note"].toString().replace(/,\s([^,]+)$/, ' र $1') + '<br />';
+                special_note_div.style.display = "block";
             }
-            special_note_div.style.display = "block";
-            if(special_note_div.innerHTML == "") {
+            else {
                 special_note_div.style.display = "none";
             }
         }
@@ -276,11 +275,11 @@ function show_content(option=view) {
     document.getElementById("holiday_events").classList.add("not_selected");
     document.getElementById("international_events").classList.add("not_selected");
     document.getElementById("year_select").style.display = "none";
-    document.getElementById("special_note").style.display = "none";
     switch(option) {
         case 1:
             document.getElementById("national_events").classList.add("selected");
             document.getElementById("national_events").classList.remove("not_selected");
+            document.getElementById("special_note").style.display = "none";
             show_national_event();
             view = 1;
             break;
@@ -288,12 +287,14 @@ function show_content(option=view) {
             document.getElementById("lunar_events").classList.add("selected");
             document.getElementById("lunar_events").classList.remove("not_selected");
             document.getElementById("year_select").style.display = "block";
+            document.getElementById("special_note").style.display = "none";
             show_lunar_event();
             view = 2;
             break;
         case 4:
             document.getElementById("international_events").classList.add("selected");
             document.getElementById("international_events").classList.remove("not_selected");
+            document.getElementById("special_note").style.display = "none";
             show_international_event();
             view = 4;
             break;
