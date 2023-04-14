@@ -19,4 +19,4 @@ const AD_MONTHS_NEP = ["जनवरी", "फेब्रुवरी", "मा
 
 const NEPALI_DIGITS = ['०','१','२','३','४','५','६','७','८','९'];
 
-const DEFAULT_YEAR = 2079;
+const DEFAULT_YEAR = 2080;
