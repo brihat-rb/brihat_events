@@ -289,6 +289,7 @@ function show_content(option=view) {
             document.getElementById("year_select").style.display = "block";
             document.getElementById("special_note").style.display = "none";
             show_lunar_event();
+            scroll_to_today();
             view = 2;
             break;
         case 4:
