@@ -159,6 +159,13 @@ function show_lunar_event() {
             var special_holiday_count = document.getElementsByClassName("specific").length;
             document.getElementById("national_holiday_count").innerHTML = arabic_numbertext_to_nepali(national_holiday_count);
             document.getElementById("special_holiday_count").innerHTML = arabic_numbertext_to_nepali(special_holiday_count);
+
+            var all_spans = document.getElementById("main_div").getElementsByTagName("span");
+            for(var i = 0; i < all_spans.length; i++) {
+                if(all_spans[i].id != "") {
+                    all_spans[i].setAttribute("title", all_spans[i].innerText);
+                }
+            }
         }
         else {
             console.warn('Cannot fetch Lunar Events Data');
