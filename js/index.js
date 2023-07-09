@@ -64,14 +64,14 @@ function show_national_event() {
             nat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 nat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span>[" + arabic_numbertext_to_nepali(index) + "] ";
+                    span_html += "<span id='" + key + "_NP'>[" + arabic_numbertext_to_nepali(index) + "] ";
                     span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
                     span_html += event;
                     span_html += "</span>";
                 });
 
                 nat_events["data"][key][0].split("/").forEach(event => {
-                    span_html += "<span>[" + index + "] ";
+                    span_html += "<span id='" + key + "_EN'>[" + index + "] ";
                     span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
                     span_html += "</span>";
@@ -80,6 +80,11 @@ function show_national_event() {
                 index++;
             });
             document.getElementById("main_div").innerHTML = span_html;
+
+            var all_spans = document.getElementById("main_div").getElementsByTagName("span");
+            for(var i = 0; i < all_spans.length; i++) {
+                all_spans[i].setAttribute("title", all_spans[i].innerText);
+            }
         }
         else {
             console.warn('Cannot fetch National Events Data');
