@@ -200,13 +200,13 @@ function show_public_holiday() {
             var index = 1;
             public_holidays_keys_list.forEach(key => {
                 key_list = key.split("-");
-                span_html += "<span class=" + public_holidays[query_year][key][1] + ">";
+                span_html += "<span id='" + key + "_NP' class=" + public_holidays[query_year][key][1] + ">";
                 span_html += "[" + arabic_numbertext_to_nepali(index) + "] ";
                 span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
                 span_html += public_holidays[query_year][key][3];
                 span_html += "</span>";
 
-                span_html += "<span class=" + public_holidays[query_year][key][1] + ">";
+                span_html += "<span id='" + key + "_EN' class=" + public_holidays[query_year][key][1] + ">";
                 span_html += "[" + index + "] ";
                 span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                 span_html += public_holidays[query_year][key][0];
@@ -226,6 +226,12 @@ function show_public_holiday() {
             }
             else {
                 special_note_div.style.display = "none";
+            }
+            var all_spans = document.getElementById("main_div").getElementsByTagName("span");
+            for(var i = 0; i < all_spans.length; i++) {
+                if(all_spans[i].id != "") {
+                    all_spans[i].setAttribute("title", all_spans[i].innerText);
+                }
             }
         }
         else {
