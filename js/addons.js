@@ -15,4 +15,23 @@ function scroll_to_today() {
 
         today_element.style.color = "teal";
     }
+    else {
+        var all_spans = document.getElementById("main_div").getElementsByTagName("span");
+        var i = 0;
+        while(all_spans[i].id.length != 5) {
+            i++;
+        }
+        while(all_spans[i].id < today_mm_dd) {
+            i++;
+        }
+        nearest_element = all_spans[i];
+        
+        var rect = nearest_element.getBoundingClientRect()
+        var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        
+        window.scroll({
+            top:        rect.top + rect.height / 2 - viewHeight / 2,
+            behavior:   'smooth' // smooth scroll
+        });
+    }
 }
