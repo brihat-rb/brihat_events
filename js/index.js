@@ -312,7 +312,6 @@ function show_content(option=view) {
             document.getElementById("year_select").style.display = "block";
             document.getElementById("special_note").style.display = "none";
             show_lunar_event();
-            scroll_to_today();
             view = 2;
             break;
         case 4:
@@ -330,8 +329,8 @@ function show_content(option=view) {
             show_public_holiday();
             view = 3;
     }
+    scroll_to_today();
 }
 
 document.getElementById("year").value = DEFAULT_YEAR;
 show_content(view);
-
