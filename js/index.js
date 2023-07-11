@@ -120,6 +120,14 @@ function show_lunar_event() {
                     if(day_event_array.lunar_event_one != "") {
                         span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
                         span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
+                        var ad_date = new Date(convert_bs_to_ad(query_year, month + 1, date + 1));
+                        var day_of_week = NEPALI_DAYS_ABBR[ad_date.getDay()];
+                        if(ad_date.getDay() == 6) {
+                            span_html += "<span class='day_of_week saturday'> (" + day_of_week + ")</span>";
+                        }
+                        else {
+                            span_html += "<span class='day_of_week'> (" + day_of_week + ")</span>";
+                        }
                         span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                         span_html += day_event_array.lunar_event_one;
                         has_events = true;
@@ -128,6 +136,14 @@ function show_lunar_event() {
                         if(day_event_array.lunar_event_one == "") {
                             span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
                             span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
+                            var ad_date = new Date(convert_bs_to_ad(query_year, month + 1, date + 1));
+                            var day_of_week = NEPALI_DAYS_ABBR[ad_date.getDay()];
+                            if(ad_date.getDay() == 6) {
+                                span_html += "<span class='day_of_week saturday'> (" + day_of_week + ")</span>";
+                            }
+                            else {
+                                span_html += "<span class='day_of_week'> (" + day_of_week + ")</span>";
+                            }
                             span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                             span_html += day_event_array.lunar_event_two;
                         }
@@ -140,6 +156,14 @@ function show_lunar_event() {
                         if(day_event_array.lunar_event_one == "" && day_event_array.lunar_event_two == "") {
                             span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5,10) +">[" + arabic_numbertext_to_nepali(index++) + "] ";
                             span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
+                            var ad_date = new Date(convert_bs_to_ad(query_year, month + 1, date + 1));
+                            var day_of_week = NEPALI_DAYS_ABBR[ad_date.getDay()];
+                            if(ad_date.getDay() == 6) {
+                                span_html += "<span class='day_of_week saturday'> (" + day_of_week + ")</span>";
+                            }
+                            else {
+                                span_html += "<span class='day_of_week'> (" + day_of_week + ")</span>";
+                            }
                             span_html += "<span class='pakshya'>&nbsp;(" + day_event_array.pakshya.slice(0, -4) + "&nbsp;" + day_event_array.tithi + ")</span> - ";
                             span_html += day_event_array.lunar_event_three;
                         }
@@ -202,14 +226,30 @@ function show_public_holiday() {
                 key_list = key.split("-");
                 span_html += "<span id='" + key + "_NP' class=" + public_holidays[query_year][key][1] + ">";
                 span_html += "[" + arabic_numbertext_to_nepali(index) + "] ";
-                span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
-                span_html += public_holidays[query_year][key][3];
+                span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते";
+                var ad_date = new Date(convert_bs_to_ad(query_year, parseInt(key_list[0]), parseInt(key_list[1])));
+                var day_of_week = NEPALI_DAYS[ad_date.getDay()];
+                if(ad_date.getDay() == 6) {
+                    span_html += "<span class='weekday saturday'> (" + day_of_week + ")</span>";
+                }
+                else {
+                    span_html += "<span class='weekday'> (" + day_of_week + ")</span>";
+                }
+                span_html += " - " + public_holidays[query_year][key][3];
                 span_html += "</span>";
 
                 span_html += "<span id='" + key + "_EN' class=" + public_holidays[query_year][key][1] + ">";
                 span_html += "[" + index + "] ";
-                span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
-                span_html += public_holidays[query_year][key][0];
+                span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]);
+                var ad_date = new Date(convert_bs_to_ad(query_year, parseInt(key_list[0]), parseInt(key_list[1])));
+                var day_of_week = ENGLISH_DAYS[ad_date.getDay()];
+                if(ad_date.getDay() == 6) {
+                    span_html += "<span class='weekday saturday'> (" + day_of_week + ")</span>";
+                }
+                else {
+                    span_html += "<span class='weekday'> (" + day_of_week + ")</span>";
+                }
+                span_html += " - " + public_holidays[query_year][key][0];
                 span_html += "</span><br />";
 
                 index++;
@@ -312,6 +352,7 @@ function show_content(option=view) {
             document.getElementById("year_select").style.display = "block";
             document.getElementById("special_note").style.display = "none";
             show_lunar_event();
+            set_saturday_color();
             view = 2;
             break;
         case 4:
@@ -327,6 +368,7 @@ function show_content(option=view) {
             document.getElementById("holiday_events").classList.remove("not_selected");
             document.getElementById("year_select").style.display = "block";
             show_public_holiday();
+            set_saturday_color();
             view = 3;
     }
     scroll_to_today();

@@ -129,6 +129,11 @@ hr {
     display: block;
 }
 
+.day_of_week {
+    font-size: x-small;
+    vertical-align: middle;
+}
+
 #special_note {
     padding: 0 5px 0 5px;
     color: darkcyan;

@@ -15,6 +15,11 @@ function scroll_to_today() {
         today_mm_dd += "_NP";
         today_mm_dd_2 = today_mm_dd.replace("_NP", "_EN");
     }
+    else {
+        if(document.getElementById("year").value != today_date_list[0]) {
+            return;
+        }
+    }
 
     today_element = document.getElementById(today_mm_dd);
     today_element_2 = document.getElementById(today_mm_dd_2);
@@ -65,5 +70,13 @@ function scroll_to_today() {
             top:        rect.top + rect.height / 2 - viewHeight / 2,
             behavior:   'smooth' // smooth scroll
         });
+    }
+}
+
+function set_saturday_color() {
+    var all_saturday_spans = document.getElementsByClassName("saturday");
+    for(var i = 0; i < all_saturday_spans.length; i++) {
+        var parent_span = all_saturday_spans[i].parentNode;
+        parent_span.style.color = "crimson";
     }
 }
