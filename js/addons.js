@@ -1,5 +1,5 @@
 function scroll_to_today() {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
 
     var today = new Date();
     var today_date_list = convert_ad_to_bs(today.getFullYear(), today.getMonth() + 1, today.getDate()).split(" ");
@@ -28,30 +28,33 @@ function scroll_to_today() {
             behavior:   'smooth' // smooth scroll
         });
 
-        today_element.style.color = "teal";
-        today_element.style.fontWeight = "bolder";
+        console.info("Scrolling to Today's Events:");
+        while (today_element.id == today_mm_dd) {
+            console.info("  ", today_element.innerText);
+            today_element.style.color = "teal";
+            today_element.style.fontWeight = "bolder";
+            today_element = today_element.nextElementSibling;
+        } 
         
-        today_element_2.style.color = "teal";
-        today_element_2.style.fontWeight = "bolder";
+        if (view != 2) {
+            while (today_element_2.id == today_mm_dd_2) {
+                console.info("  ", today_element_2.innerText);
+                today_element_2.style.color = "teal";
+                today_element_2.style.fontWeight = "bolder";
+                today_element_2 = today_element_2.nextElementSibling;
+            } 
+        }
     }
     else {
         var all_spans = document.getElementById("main_div").getElementsByTagName("span");
         var i = 0;
         if(view == 2) {
-            while(all_spans[i].id.length != 5) {
-                i++;
-            }
-            while(all_spans[i].id < today_mm_dd) {
-                i++;
-            }
+            while(all_spans[i].id.length != 5) i++;
+            while(all_spans[i].id < today_mm_dd) i++;
         }
         else {
-            while(all_spans[i].id.length != 8) {
-                i++;
-            }
-            while(all_spans[i].id < today_mm_dd) {
-                i++;
-            }
+            while(all_spans[i].id.length != 8) i++;
+            while(all_spans[i].id < today_mm_dd) i++;
         }
         nearest_element = all_spans[i];
         
