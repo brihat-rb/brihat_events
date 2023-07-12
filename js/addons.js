@@ -15,10 +15,13 @@ function scroll_to_today() {
         today_mm_dd += "_NP";
         today_mm_dd_2 = today_mm_dd.replace("_NP", "_EN");
     }
-    else {
+    else if (view == 2 || view == 3) {
         if(document.getElementById("year").value != today_date_list[0]) {
             return;
         }
+    }
+    else {
+        console.warn("Some other case occured.");
     }
 
     today_element = document.getElementById(today_mm_dd);
