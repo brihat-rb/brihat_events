@@ -2,6 +2,7 @@ var tbody = document.getElementById("table_body");
 
 var lunar_data = lunar_events.data;
 var table_design = ["table-primary", "table-success", "table-danger", "table-warning", "table-info", "table-light", "table-danger", "table-primary", "table-warning", "table-success", "table-info", "table-danger"];
+var today_date_id = today_bs_date[0] + "-" + today_bs_date[1].padStart(2, "0") + "-" + today_bs_date[2].padStart(2, "0");
 
 var count = 1;
 for(var i = 0; i < lunar_data.length; i++) {
@@ -110,7 +111,9 @@ for(var i = 0; i < lunar_data.length; i++) {
         if(public_holiday_events.hasOwnProperty(bs_date_split[0])) {
             if(public_holiday_events[bs_date_split[0]].hasOwnProperty(date_data.date.slice(5,10))) {
                 var public_holiday = public_holiday_events[bs_date_split[0]][date_data.date.slice(5,10)];
-                table_data_holiday_remark.innerHTML = public_holiday[2];
+                table_data_holiday_remark.innerHTML = public_holiday[3] + "<br/>";
+                // table_data_holiday_remark.innerHTML += " (" + public_holiday[0] + ")<br/>";
+                table_data_holiday_remark.innerHTML += public_holiday[2];
                 table_row.classList.add(public_holiday[1]);
             }
         }
@@ -119,6 +122,8 @@ for(var i = 0; i < lunar_data.length; i++) {
         tbody.appendChild(table_row);
     }
 }
+
+document.getElementById(today_date_id).classList.add("text-success");
 
 $(document).ready(function () {
     $('#event_table').DataTable({
