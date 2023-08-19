@@ -1,8 +1,8 @@
-var tbody = document.getElementById("table_body");
+const tbody = document.getElementById("table_body");
 
-var lunar_data = lunar_events.data;
-var table_design = ["table-primary", "table-success", "table-danger", "table-warning", "table-info", "table-light", "table-danger", "table-primary", "table-warning", "table-success", "table-info", "table-danger"];
-var today_date_id = today_bs_date[0] + "-" + today_bs_date[1].padStart(2, "0") + "-" + today_bs_date[2].padStart(2, "0");
+const lunar_data = lunar_events.data;
+const table_design = ["table-primary", "table-success", "table-danger", "table-warning", "table-info", "table-light", "table-danger", "table-primary", "table-warning", "table-success", "table-info", "table-danger"];
+const today_date_id = today_bs_date[0] + "-" + today_bs_date[1].padStart(2, "0") + "-" + today_bs_date[2].padStart(2, "0");
 
 var count = 1;
 for(var i = 0; i < lunar_data.length; i++) {
@@ -126,7 +126,7 @@ for(var i = 0; i < lunar_data.length; i++) {
 document.getElementById(today_date_id).classList.add("text-success");
 
 $(document).ready(function () {
-    $('#event_table').DataTable({
+    const event_dt = $('#event_table').DataTable({
         fixedHeader: true,
         // paging: false,
         // responsive: true,
@@ -137,4 +137,9 @@ $(document).ready(function () {
         pagingType: "full_numbers",
         scrollX: true,
     });
+
+    const today_index = event_dt.row('#' + today_date_id)[0][0];
+    const page_length = document.getElementsByName("event_table_length")[0].value;
+    const page = Math.floor(today_index / page_length);
+    event_dt.page(page).draw('page');
 });
