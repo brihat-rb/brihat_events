@@ -115,6 +115,7 @@ $(document).ready(function () {
         "info": true,
         "lengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
         "pageLength": 25,
+        pagingType: "full_numbers",
         scrollX: true,
     });
 });
