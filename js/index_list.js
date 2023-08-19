@@ -91,7 +91,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         var sns_date_key = sns_date_split[1].padStart(2,"0") + "-" + sns_date_split[2].padStart(2, "0");
         
         var table_data_other_events = document.createElement("td");
-        table_data_other_events.classList.add("align-top");
+        table_data_other_events.classList.add("other_events", "align-top");
         table_data_other_events.setAttribute("id", date_data.date + "_other");
         if(snsevents.data.hasOwnProperty(sns_date_key)) {
             table_data_other_events.innerHTML = snsevents.data[sns_date_key][1].replace("/","<br />");
@@ -140,6 +140,20 @@ $(document).ready(function () {
         scrollX: true,
         "dom": '<if>rt<lp>',
         "ordering": false,
+        "drawCallback": function( settings ) {
+            var api = this.api();
+            api.column(6).visible(true);
+            
+            var all_other_events_in_page = document.getElementsByClassName("other_events");
+            var hide_other_events_column = true;
+            for (var i = 0; i < all_other_events_in_page.length; i++) {
+                if(all_other_events_in_page[i].innerText != "") {
+                    hide_other_events_column = false;
+                    break;
+                }
+            }
+            api.column(6).visible(!hide_other_events_column);
+        }
     });
 
     const today_index = event_dt.row('#' + today_date_id)[0][0];
