@@ -1,3 +1,5 @@
+window.scrollTo(0, 0);
+
 const tbody = document.getElementById("table_body");
 
 const lunar_data = lunar_events.data;
@@ -132,14 +134,25 @@ $(document).ready(function () {
         // responsive: true,
         "processing": true,
         "info": true,
-        "lengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
-        "pageLength": 25,
+        "lengthMenu": [[10, 15, 25, 50, 75, 100, -1], [10, 15, 25, 50, 75, 100, "All"]],
+        "pageLength": 15,
         pagingType: "full_numbers",
         scrollX: true,
+        "dom": '<if>rt<lp>',
+        "ordering": false,
     });
 
     const today_index = event_dt.row('#' + today_date_id)[0][0];
     const page_length = document.getElementsByName("event_table_length")[0].value;
     const page = Math.floor(today_index / page_length);
     event_dt.page(page).draw('page');
+
+    var today_element = document.getElementById(today_date_id);
+    var rect = today_element.getBoundingClientRect()
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    
+    window.scroll({
+        top:        rect.top + rect.height / 2 - viewHeight / 2,
+        behavior:   'smooth' // smooth scroll
+    });
 });
