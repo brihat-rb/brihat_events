@@ -10,7 +10,8 @@ for(var i = 0; i < lunar_data.length; i++) {
         var date_data = lunar_data[i][j];
         table_row.classList.add(table_design[i]);
         table_row.setAttribute("id", date_data.date);
-        
+
+        // SNo
         var table_data_sn = document.createElement("td");
         table_data_sn.setAttribute("id", "row_" + count);
         table_data_sn.classList.add("text-nowrap", "text-center", "align-top");
@@ -24,6 +25,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         var ad_date = ad_date_split[0] + " " + AD_MONTHS_SHORT[ad_date_split[1] - 1] + " " + ad_date_split[2];
         var weekday = new Date(bs_ad_date).getDay();
 
+        // BS AD DATE
         var table_data_bs_date = document.createElement("td");
         table_data_bs_date.classList.add("text-nowrap", "text-center", "align-top");
         table_data_bs_date.setAttribute("id", date_data.date + "_bsaddate");
@@ -31,6 +33,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_bs_date.innerHTML += ad_date + " (" + ENGLISH_DAYS_SHORT[weekday] + ")";
         table_row.appendChild(table_data_bs_date);
         
+        // LUNAR INFO
         var table_data_lunar_info = document.createElement("td");
         table_data_lunar_info.classList.add("text-nowrap", "align-top");
         table_data_lunar_info.setAttribute("id", date_data.date + "_lunardate");
@@ -38,6 +41,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_lunar_info.innerHTML += "(" + date_data.pakshya + "&nbsp;" + date_data.tithi + ")";
         table_row.appendChild(table_data_lunar_info);
         
+        // LUNAR EVENTS
         var table_data_lunar_events = document.createElement("td");
         table_data_lunar_events.classList.add("align-top");
         table_data_lunar_events.setAttribute("id", date_data.date + "_lunar");
@@ -59,6 +63,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         }
         table_row.appendChild(table_data_lunar_events);
         
+        // NATIONAL EVENTS
         var table_data_nat_events = document.createElement("td");
         table_data_nat_events.classList.add("align-top");
         table_data_nat_events.setAttribute("id", date_data.date + "_national");
@@ -67,6 +72,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         }
         table_row.appendChild(table_data_nat_events);
         
+        // INTERNATIONAL EVENTS
         var ad_date_key = ad_date_split[1].padStart(2,"0") + "-" + ad_date_split[2].padStart(2, "0");
         var table_data_internat_events = document.createElement("td");
         table_data_internat_events.classList.add("align-top");
@@ -77,6 +83,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         }
         table_row.appendChild(table_data_internat_events);
 
+        // OTHER EVENTS
         var sns_date_split = convert_ad_to_ns(ad_date_split[0], ad_date_split[1], ad_date_split[2]).split(" ");
         var sns_date_key = sns_date_split[1].padStart(2,"0") + "-" + sns_date_split[2].padStart(2, "0");
         
