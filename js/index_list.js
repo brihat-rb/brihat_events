@@ -102,6 +102,20 @@ for(var i = 0; i < lunar_data.length; i++) {
             }
         }
         table_row.appendChild(table_data_other_events);
+
+        // PUBLIC HOLIDAYS
+        var table_data_holiday_remark = document.createElement("td");
+        table_data_holiday_remark.classList.add("align-top");
+        table_data_holiday_remark.setAttribute("id", date_data.date + "_holiday");
+        if(public_holiday_events.hasOwnProperty(bs_date_split[0])) {
+            if(public_holiday_events[bs_date_split[0]].hasOwnProperty(date_data.date.slice(5,10))) {
+                var public_holiday = public_holiday_events[bs_date_split[0]][date_data.date.slice(5,10)];
+                table_data_holiday_remark.innerHTML = public_holiday[2];
+                table_row.classList.add(public_holiday[1]);
+            }
+        }
+
+        table_row.appendChild(table_data_holiday_remark);
         tbody.appendChild(table_row);
     }
 }
