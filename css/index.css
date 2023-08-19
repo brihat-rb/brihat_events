@@ -261,4 +261,8 @@ hr {
         width: 100%;
         text-align: center;
     }
+    
+    #list_view {
+        display: none;
+    }
 }
