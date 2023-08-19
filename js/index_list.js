@@ -97,6 +97,8 @@ for(var i = 0; i < lunar_data.length; i++) {
 
 $(document).ready(function () {
     $('#event_table').DataTable({
+        fixedHeader: true,
+        responsive: true,
         "processing": true,
         "info": true,
         "lengthMenu": [[10, 25, 50, 75, -1], [10, 25, 50, 75, "All"]],
