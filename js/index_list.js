@@ -28,21 +28,31 @@ for(var i = 0; i < lunar_data.length; i++) {
         var ad_date = ad_date_split[0] + " " + AD_MONTHS_SHORT[ad_date_split[1] - 1] + " " + ad_date_split[2];
         var weekday = new Date(bs_ad_date).getDay();
 
-        // BS AD DATE
-        var table_data_bs_date = document.createElement("td");
-        table_data_bs_date.classList.add("text-nowrap", "text-center", "align-top");
-        table_data_bs_date.setAttribute("id", date_data.date + "_bsaddate");
-        table_data_bs_date.innerHTML = arabic_number_to_nepali(bs_date_split[0]) + " " + BS_MONTHS_NEP[bs_date_split[1] - 1] + " " + arabic_number_to_nepali(bs_date_split[2].replace(/^0+/, '')) + " (" + NEPALI_DAYS_SHORT[weekday] + ")<br />";
-        table_data_bs_date.innerHTML += ad_date + " (" + ENGLISH_DAYS_SHORT[weekday] + ")";
-        table_row.appendChild(table_data_bs_date);
+        // // BS AD DATE
+        // var table_data_bs_date = document.createElement("td");
+        // table_data_bs_date.classList.add("text-nowrap", "text-center", "align-top");
+        // table_data_bs_date.setAttribute("id", date_data.date + "_bsaddate");
+        // table_data_bs_date.innerHTML = arabic_number_to_nepali(bs_date_split[0]) + " " + BS_MONTHS_NEP[bs_date_split[1] - 1] + " " + arabic_number_to_nepali(bs_date_split[2].replace(/^0+/, '')) + " (" + NEPALI_DAYS_SHORT[weekday] + ")<br />";
+        // table_data_bs_date.innerHTML += ad_date + " (" + ENGLISH_DAYS_SHORT[weekday] + ")";
+        // table_row.appendChild(table_data_bs_date);
         
-        // LUNAR INFO
-        var table_data_lunar_info = document.createElement("td");
-        table_data_lunar_info.classList.add("text-nowrap", "align-top");
-        table_data_lunar_info.setAttribute("id", date_data.date + "_lunardate");
-        table_data_lunar_info.innerHTML = arabic_number_to_nepali(date_data.ns_year) + "&nbsp;" + date_data.lunar_month + "&nbsp;" + date_data.tithi + "<br />";
-        table_data_lunar_info.innerHTML += "(" + date_data.pakshya + "&nbsp;" + date_data.tithi + ")";
-        table_row.appendChild(table_data_lunar_info);
+        // // LUNAR INFO
+        // var table_data_lunar_info = document.createElement("td");
+        // table_data_lunar_info.classList.add("text-nowrap", "align-top");
+        // table_data_lunar_info.setAttribute("id", date_data.date + "_lunardate");
+        // table_data_lunar_info.innerHTML = arabic_number_to_nepali(date_data.ns_year) + "&nbsp;" + date_data.lunar_month + "&nbsp;" + date_data.tithi + "<br />";
+        // table_data_lunar_info.innerHTML += "(" + date_data.pakshya + "&nbsp;" + date_data.tithi + ")";
+        // table_row.appendChild(table_data_lunar_info);
+
+        // BS AD NS DATE
+        var table_data_date = document.createElement("td");
+        table_data_date.classList.add("text-center", "align-top");
+        table_data_date.setAttribute("id", date_data.date + "_date");
+        table_data_date.innerHTML = arabic_number_to_nepali(bs_date_split[0]) + " " + BS_MONTHS_NEP[bs_date_split[1] - 1] + " " + arabic_number_to_nepali(bs_date_split[2].replace(/^0+/, '')) + " (" + NEPALI_DAYS_SHORT[weekday] + ")<br />";
+        table_data_date.innerHTML += arabic_number_to_nepali(date_data.ns_year) + "&nbsp;" + date_data.lunar_month + "&nbsp;" + date_data.tithi + "<br />";
+        table_data_date.innerHTML += ad_date + " (" + ENGLISH_DAYS_SHORT[weekday] + ")";
+        table_data_date.setAttribute("title", arabic_number_to_nepali(date_data.ns_year) + " " + date_data.pakshya + " " + date_data.tithi);
+        table_row.appendChild(table_data_date);
         
         // LUNAR EVENTS
         var table_data_lunar_events = document.createElement("td");
@@ -50,19 +60,19 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_lunar_events.setAttribute("id", date_data.date + "_lunar");
         table_data_lunar_events.innerHTML = "";
         if(date_data.lunar_event_one != "") {
-           table_data_lunar_events.innerHTML += date_data.lunar_event_one;
+           table_data_lunar_events.innerHTML += date_data.lunar_event_one.replaceAll("/","<br />");
         }
         if(date_data.lunar_event_two != "") {
             if(table_data_lunar_events.innerHTML != "") {
                 table_data_lunar_events.innerHTML += "<br />";
             }
-            table_data_lunar_events.innerHTML += date_data.lunar_event_two;
+            table_data_lunar_events.innerHTML += date_data.lunar_event_two.replaceAll("/","<br />");
         }
         if(date_data.lunar_event_three != "") {
             if(table_data_lunar_events.innerHTML != "") {
                 table_data_lunar_events.innerHTML += "<br />";
             }
-            table_data_lunar_events.innerHTML += date_data.lunar_event_three;
+            table_data_lunar_events.innerHTML += date_data.lunar_event_three.replaceAll("/","<br />");
         }
         table_row.appendChild(table_data_lunar_events);
         
@@ -71,7 +81,8 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_nat_events.classList.add("national_events", "align-top");
         table_data_nat_events.setAttribute("id", date_data.date + "_national");
         if (nevents.data.hasOwnProperty(date_data.date.slice(5,10))) {
-            table_data_nat_events.innerHTML = nevents.data[date_data.date.slice(5,10)][1].replace("/","<br />");
+            table_data_nat_events.innerHTML = nevents.data[date_data.date.slice(5,10)][1].replaceAll("/","<br />");
+            table_data_nat_events.setAttribute("title", nevents.data[date_data.date.slice(5,10)][0].replaceAll("/","\n"));
         }
         table_row.appendChild(table_data_nat_events);
         
@@ -81,8 +92,9 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_internat_events.classList.add("international_events", "align-top");
         table_data_internat_events.setAttribute("id", date_data.date + "_international");
         if(ievents.data.hasOwnProperty(ad_date_key)) {
-            table_data_internat_events.innerHTML = ievents.data[ad_date_key][1].replace("/","<br />");
-            table_data_internat_events.innerHTML += "<br />" + ievents.data[ad_date_key][0].replace("/","<br />");
+            table_data_internat_events.innerHTML = ievents.data[ad_date_key][0].replaceAll("/","<br />");
+            // table_data_internat_events.innerHTML += "<br />" + ievents.data[ad_date_key][1].replaceAll("/","<br />");
+            table_data_internat_events.setAttribute("title", ievents.data[ad_date_key][1].replaceAll("/","\n"));
         }
         table_row.appendChild(table_data_internat_events);
 
@@ -94,14 +106,16 @@ for(var i = 0; i < lunar_data.length; i++) {
         table_data_other_events.classList.add("other_events", "align-top");
         table_data_other_events.setAttribute("id", date_data.date + "_other");
         if(snsevents.data.hasOwnProperty(sns_date_key)) {
-            table_data_other_events.innerHTML = snsevents.data[sns_date_key][1].replace("/","<br />");
-            table_data_other_events.innerHTML += "<br />" + snsevents.data[sns_date_key][0].replace("/","<br />");
+            table_data_other_events.innerHTML = snsevents.data[sns_date_key][1].replaceAll("/","<br />");
+            // table_data_other_events.innerHTML += "<br />" + snsevents.data[sns_date_key][0].replaceAll("/","<br />");
+            table_data_other_events.setAttribute("title", snsevents.data[sns_date_key][0].replaceAll("/","\n"));
         }
         
         if(other_events.data.hasOwnProperty(ad_date_split[0])) {
             if(other_events.data[ad_date_split[0]].hasOwnProperty(ad_date_key)) {
-                table_data_other_events.innerHTML = other_events.data[ad_date_split[0]][ad_date_key][1].replace("/","<br />");
-                table_data_other_events.innerHTML += "<br />" + other_events.data[ad_date_split[0]][ad_date_key][0].replace("/","<br />");
+                table_data_other_events.innerHTML = other_events.data[ad_date_split[0]][ad_date_key][1].replaceAll("/","<br />");
+                // table_data_other_events.innerHTML += "<br />" + other_events.data[ad_date_split[0]][ad_date_key][0].replaceAll("/","<br />");
+                table_data_other_events.setAttribute("title", other_events.data[ad_date_split[0]][ad_date_key][0].replaceAll("/","\n"));
             }
         }
         table_row.appendChild(table_data_other_events);
@@ -113,8 +127,9 @@ for(var i = 0; i < lunar_data.length; i++) {
         if(public_holiday_events.hasOwnProperty(bs_date_split[0])) {
             if(public_holiday_events[bs_date_split[0]].hasOwnProperty(date_data.date.slice(5,10))) {
                 var public_holiday = public_holiday_events[bs_date_split[0]][date_data.date.slice(5,10)];
-                table_data_holiday_remark.innerHTML = public_holiday[3] + "<br/>";
+                table_data_holiday_remark.innerHTML = public_holiday[3].replaceAll("/","<br />") + "<br/>";
                 // table_data_holiday_remark.innerHTML += " (" + public_holiday[0] + ")<br/>";
+                table_data_holiday_remark.setAttribute("title", public_holiday[0].replaceAll("/","\n"));
                 table_data_holiday_remark.innerHTML += public_holiday[2];
                 table_row.classList.add(public_holiday[1]);
             }
@@ -131,21 +146,27 @@ $(document).ready(function () {
     const event_dt = $('#event_table').DataTable({
         fixedHeader: true,
         // paging: false,
-        // responsive: true,
-        "processing": true,
-        "info": true,
-        "lengthMenu": [[10, 15, 25, 50, 75, 100, -1], [10, 15, 25, 50, 75, 100, "All"]],
-        "pageLength": 15,
+        responsive: true,
         pagingType: "full_numbers",
         scrollX: true,
-        "dom": '<if>rt<lp>',
+        "processing": true,
+        "info": true,
         "ordering": false,
+        "lengthMenu": [[10, 15, 25, 50, 75, 100, -1], [10, 15, 25, 50, 75, 100, "All"]],
+        "pageLength": 15,
+        "dom": '<if>rt<lp>',
         "drawCallback": function( settings ) {
             var api = this.api();
-            api.column(3).visible(true);api.column(4).visible(true);api.column(5).visible(true);api.column(6).visible(true);api.column(7).visible(true);
+            var event_start_index = 2;
+            var column_index = event_start_index;
+            
+            api.column(event_start_index++).visible(true);
+            api.column(event_start_index++).visible(true);
+            api.column(event_start_index++).visible(true);
+            api.column(event_start_index++).visible(true);
+            api.column(event_start_index++).visible(true);
             var info_classes = ["lunar_events", "national_events", "international_events", "other_events", "public_holiday_events"];
             
-            var column_index = 3;
             for(event_class of info_classes) {
                 var all_column_events = document.getElementsByClassName(event_class);
                 var hide_this_column = true;
