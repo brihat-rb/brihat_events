@@ -176,6 +176,9 @@ $(document).ready(function () {
                         break;
                     }
                 }
+                if(hide_this_column) {
+                    console.info(event_class.replaceAll("_", " "), "column hidden");
+                }
                 api.column(column_index++).visible(!hide_this_column);
             }
         }
