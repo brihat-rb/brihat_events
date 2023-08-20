@@ -146,7 +146,7 @@ $(document).ready(function () {
     const event_dt = $('#event_table').DataTable({
         fixedHeader: true,
         // paging: false,
-        responsive: true,
+        // responsive: true,
         pagingType: "full_numbers",
         scrollX: true,
         "processing": true,
