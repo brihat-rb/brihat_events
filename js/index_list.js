@@ -46,7 +46,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         
         // LUNAR EVENTS
         var table_data_lunar_events = document.createElement("td");
-        table_data_lunar_events.classList.add("align-top");
+        table_data_lunar_events.classList.add("lunar_events", "align-top");
         table_data_lunar_events.setAttribute("id", date_data.date + "_lunar");
         table_data_lunar_events.innerHTML = "";
         if(date_data.lunar_event_one != "") {
@@ -68,7 +68,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         
         // NATIONAL EVENTS
         var table_data_nat_events = document.createElement("td");
-        table_data_nat_events.classList.add("align-top");
+        table_data_nat_events.classList.add("national_events", "align-top");
         table_data_nat_events.setAttribute("id", date_data.date + "_national");
         if (nevents.data.hasOwnProperty(date_data.date.slice(5,10))) {
             table_data_nat_events.innerHTML = nevents.data[date_data.date.slice(5,10)][1].replace("/","<br />");
@@ -78,7 +78,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         // INTERNATIONAL EVENTS
         var ad_date_key = ad_date_split[1].padStart(2,"0") + "-" + ad_date_split[2].padStart(2, "0");
         var table_data_internat_events = document.createElement("td");
-        table_data_internat_events.classList.add("align-top");
+        table_data_internat_events.classList.add("international_events", "align-top");
         table_data_internat_events.setAttribute("id", date_data.date + "_international");
         if(ievents.data.hasOwnProperty(ad_date_key)) {
             table_data_internat_events.innerHTML = ievents.data[ad_date_key][1].replace("/","<br />");
@@ -108,7 +108,7 @@ for(var i = 0; i < lunar_data.length; i++) {
 
         // PUBLIC HOLIDAYS
         var table_data_holiday_remark = document.createElement("td");
-        table_data_holiday_remark.classList.add("align-top");
+        table_data_holiday_remark.classList.add("public_holiday_events", "align-top");
         table_data_holiday_remark.setAttribute("id", date_data.date + "_holiday");
         if(public_holiday_events.hasOwnProperty(bs_date_split[0])) {
             if(public_holiday_events[bs_date_split[0]].hasOwnProperty(date_data.date.slice(5,10))) {
@@ -142,17 +142,21 @@ $(document).ready(function () {
         "ordering": false,
         "drawCallback": function( settings ) {
             var api = this.api();
-            api.column(6).visible(true);
+            api.column(3).visible(true);api.column(4).visible(true);api.column(5).visible(true);api.column(6).visible(true);api.column(7).visible(true);
+            var info_classes = ["lunar_events", "national_events", "international_events", "other_events", "public_holiday_events"];
             
-            var all_other_events_in_page = document.getElementsByClassName("other_events");
-            var hide_other_events_column = true;
-            for (var i = 0; i < all_other_events_in_page.length; i++) {
-                if(all_other_events_in_page[i].innerText != "") {
-                    hide_other_events_column = false;
-                    break;
+            var column_index = 3;
+            for(event_class of info_classes) {
+                var all_column_events = document.getElementsByClassName(event_class);
+                var hide_this_column = true;
+                for (var i = 0; i < all_column_events.length; i++) {
+                    if(all_column_events[i].innerText != "") {
+                        hide_this_column = false;
+                        break;
+                    }
                 }
+                api.column(column_index++).visible(!hide_this_column);
             }
-            api.column(6).visible(!hide_other_events_column);
         }
     });
 
