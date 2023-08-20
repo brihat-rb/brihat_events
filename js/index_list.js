@@ -46,7 +46,7 @@ for(var i = 0; i < lunar_data.length; i++) {
 
         // BS AD NS DATE
         var table_data_date = document.createElement("td");
-        table_data_date.classList.add("text-center", "align-top");
+        table_data_date.classList.add("text-nowrap", "text-center", "align-top");
         table_data_date.setAttribute("id", date_data.date + "_date");
         table_data_date.innerHTML = arabic_number_to_nepali(bs_date_split[0]) + " " + BS_MONTHS_NEP[bs_date_split[1] - 1] + " " + arabic_number_to_nepali(bs_date_split[2].replace(/^0+/, '')) + " (" + NEPALI_DAYS_SHORT[weekday] + ")<br />";
         table_data_date.innerHTML += arabic_number_to_nepali(date_data.ns_year) + "&nbsp;" + date_data.lunar_month + "&nbsp;" + date_data.tithi + "<br />";
@@ -56,7 +56,7 @@ for(var i = 0; i < lunar_data.length; i++) {
         
         // LUNAR EVENTS
         var table_data_lunar_events = document.createElement("td");
-        table_data_lunar_events.classList.add("lunar_events", "align-top");
+        table_data_lunar_events.classList.add("text-nowrap", "lunar_events", "align-top");
         table_data_lunar_events.setAttribute("id", date_data.date + "_lunar");
         table_data_lunar_events.innerHTML = "";
         if(date_data.lunar_event_one != "") {
