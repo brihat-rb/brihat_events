@@ -192,7 +192,8 @@ function show_lunar_event() {
             var all_spans = document.getElementById("main_div").getElementsByTagName("span");
             for(var i = 0; i < all_spans.length; i++) {
                 if(all_spans[i].id != "") {
-                    all_spans[i].setAttribute("title", all_spans[i].innerText);
+                    all_spans[i].innerHTML = all_spans[i].innerHTML.replaceAll(" /", ",");
+                    all_spans[i].setAttribute("title", all_spans[i].innerText.split(/-(.*)/)[1]);
                 }
             }
         }
@@ -270,7 +271,8 @@ function show_public_holiday() {
             var all_spans = document.getElementById("main_div").getElementsByTagName("span");
             for(var i = 0; i < all_spans.length; i++) {
                 if(all_spans[i].id != "") {
-                    all_spans[i].setAttribute("title", all_spans[i].innerText);
+                    all_spans[i].innerHTML = all_spans[i].innerHTML.replaceAll(" /", ",");
+                    all_spans[i].setAttribute("title", all_spans[i].innerText.split(/-(.*)/)[1]);
                 }
             }
         }
