@@ -130,7 +130,7 @@ for(var i = 0; i < lunar_data.length; i++) {
                 table_data_holiday_remark.innerHTML = public_holiday[3].replaceAll("/","<br />") + "<br/>";
                 // table_data_holiday_remark.innerHTML += " (" + public_holiday[0] + ")<br/>";
                 table_data_holiday_remark.setAttribute("title", public_holiday[0].replaceAll("/","\n"));
-                table_data_holiday_remark.innerHTML += public_holiday[2];
+                table_data_holiday_remark.innerHTML += public_holiday[2].replaceAll("/","<br />");
                 table_row.classList.add(public_holiday[1]);
             }
         }
