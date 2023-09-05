@@ -31,6 +31,16 @@
       <noscript>Please enable JavaScript and reload</noscript>
     </div>
     <h4 class="text-success text-center fw-bold">List of Lunar, National, International, and Other Events w/ Holiday Information (for <span id="title_year" class="fs-4"></span> B.S.)</h4>
+    <div id = "year_select" class="public">
+      <label for="year">वि. सं. </label> 
+      <select name="year" id="year" onchange="change_list(this.value);">
+          <option value="2076">२०७६</option>
+          <option value="2077">२०७७</option>
+          <option value="2078">२०७८</option>
+          <option value="2079">२०७९</option>
+          <option value="2080" selected>२०८०</option>
+      </select>
+    </div>
     <!-- <h2 id = "title_year" class="text-primary text-center"></h2> -->
     <table id="event_table" class="table table-sm table-primary table-striped table-hover table-borderless" style="width:100%">
       <thead class="table-dark table align-middle">
