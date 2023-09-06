@@ -240,8 +240,7 @@ function change_list(year = "") {
         });
     }
 
-    document.getElementById("title_year").innerText = year;
-    document.getElementById("year").value = year;
-}
+    document.getElementById("event_year").value = year;
+}   
 
 change_list(today_bs_date[0]);

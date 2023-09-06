@@ -16,11 +16,23 @@
           font-variant: normal;
           font-weight: bold;
           font-size: small;
+          font-family: "Laila";
         }
 
         .table, .table-primary, .table-success, .table-danger, .table-warning, .table-info, .table-light {
           --bs-table-striped-color: none;
           --bs-table-hover-color: none;
+        }
+
+        #event_year {
+          border: none;
+          appearance: none;
+          background-color: white;
+        }
+
+        #event_year:hover {
+          cursor: pointer;
+          border-bottom: 2px solid red;
         }
       </style>
   </head>
@@ -30,18 +42,18 @@
       <span id="loading_title">List of Events</span>
       <noscript>Please enable JavaScript and reload</noscript>
     </div>
-    <h4 class="text-success text-center fw-bold">List of Lunar, National, International, and Other Events w/ Holiday Information (for <span id="title_year" class="fs-4"></span> B.S.)</h4>
-    <div id = "year_select" class="public">
-      <label for="year">वि. सं. </label> 
-      <select name="year" id="year" onchange="change_list(this.value);">
-          <option value="2076">२०७६</option>
-          <option value="2077">२०७७</option>
-          <option value="2078">२०७८</option>
-          <option value="2079">२०७९</option>
-          <option value="2080" selected>२०८०</option>
-      </select>
-    </div>
-    <!-- <h2 id = "title_year" class="text-primary text-center"></h2> -->
+    <h4 class="text-success text-center fw-bold">List of Lunar, National, International, and Other Events w/ Holiday Information
+      <br/>(for <span id="event_year_span" class="fs-4">
+        <select id="event_year" onchange="change_list(this.value);" class="text-success" title="Change BS Year">
+            <option value="2076">2076</option>
+            <option value="2077">2077</option>
+            <option value="2078">2078</option>
+            <option value="2079">2079</option>
+            <option value="2080" selected>2080</option>
+        </select>
+      </span> B.S.)
+    </h4>
+
     <table id="event_table" class="table table-sm table-primary table-striped table-hover table-borderless" style="width:100%">
       <thead class="table-dark table align-middle">
         <tr>

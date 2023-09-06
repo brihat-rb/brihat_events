@@ -10,7 +10,7 @@ const today_date = new Date();
 const today_bs_date = convert_ad_to_bs(today_date.getFullYear(), today_date.getMonth() + 1, today_date.getDate()).split(" ");
 var today_date_id = today_bs_date[0] + "-" + today_bs_date[1].padStart(2, "0") + "-" + today_bs_date[2].padStart(2, "0");
 const today_year = today_bs_date[0];
-document.getElementById("title_year").innerHTML = today_year;
+document.getElementById("event_year").value = today_year;
 
 // GET EVENTS JSON
 const nat_event_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/national_events.json';
