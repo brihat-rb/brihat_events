@@ -56,6 +56,13 @@ event_req.onload = function () {
       }
       tr_elem.appendChild(td_elems);
     }
+
+    var td_month_right = document.createElement('td');
+    td_month_right.innerHTML = month;
+    td_month_right.innerHTML += "<br />(" + events[month]["eq_names"][0] + ")";
+    td_month_right.setAttribute("class", "text-center text-nowrap");
+    tr_elem.appendChild(td_month_right);
+    
     document.getElementById("table_body").appendChild(tr_elem);
   }
 }
