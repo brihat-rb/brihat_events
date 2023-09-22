@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="List of National Events of Nepal" />
+  <meta name="keywords" content="brihat, ratna, bajracharya, events, national, brihat events" />
+  <meta name="author" content="Brihat Ratna Bajracharya" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta property="og:title" content="Brihat Ratna Bajracharya" />
+  <meta property="og:image" content="./assets/brihat_events_logo.png" />
+  <meta property="og:type" content="blog" />
+  <meta property="og:site_name" content="Brihat List of National Events" />
+  <meta property="og:url" content="https://events.brihatrb.com.np/national_events" />
+  <meta property="og:description" content="Brihat National Events' List" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@Brihat9" />
+  <meta name="twitter:title" content="Brihat List of National Events" />
+  <meta name="twitter:description" content="List of National Events" />
+  <meta name="twitter:image" content="./assets/brihat_events_logo.png" />
+  <meta name="twitter:image:alt" content="Brihat National Events' List" />
+
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
+  <title>List of National Events | Brihat</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Laila&display=swap" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Laila';
+      font-weight: bold;
+      font-size: 12px;
+      user-select: none;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .footer {
+      position: sticky;
+      bottom: 0;
+      z-index: 100;
+    }
+
+    th:nth-child(1),
+    td:nth-child(1) {
+      position: sticky;
+      left: 0px;
+    }
+
+    th:nth-child(14),
+    td:nth-child(14) {
+      position: sticky;
+      right: 0px;
+    }
+
+    td:hover {
+      border: 2px solid maroon !important;
+      color: maroon !important;
+      background-color: darkgray !important;
+      --bs-table-striped-bg: darkgray !important;
+    }
+  </style>
+</head>
+
+<body>
+  <table id="event_table" class="table table-sm table-success table-striped-columns table-bordered"
+    style="color: darkgreen; --bs-table-striped-color: darkblue; --bs-table-hover-color: maroon; width:100%;">
+    <thead class="header table-dark table align-middle">
+      <!-- <tr><td colspan="18" class="text-center">Compiled By Brihat (reachme@brihatrb.com.np)</td></tr> -->
+      <tr>
+        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">गते &dArr; | महिना &rArr;</th>
+        <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
+        <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
+        <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
+        <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
+        <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
+        <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
+        <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
+        <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
+        <th class="text-center" title="पौष" scope="col">पौष</th>
+        <th class="text-center" title="माघ" scope="col">माघ</th>
+        <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
+        <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
+        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &dArr;</th>
+      </tr>
+    </thead>
+    <tbody id="table_body"></tbody>
+    <tfoot class="footer table-dark text-center">
+      <tr>
+        <th class="text-center text-nowrap" title="गते &uArr; | महिना &rArr;" scope="col">गते &uArr; | महिना &rArr;</th>
+        <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
+        <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
+        <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
+        <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
+        <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
+        <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
+        <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
+        <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
+        <th class="text-center" title="पौष" scope="col">पौष</th>
+        <th class="text-center" title="माघ" scope="col">माघ</th>
+        <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
+        <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
+        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &uArr;</th>
+      </tr>
+      <tr>
+        <td colspan="4" class="text-center">Compiled By Brihat Ratna Bajracharya</td>
+        <td colspan="5" class="text-center">May not be 100 % accurate</td>
+        <td colspan="5" class="text-center">reachme@brihatrb.com.np</td>
+      </tr>
+    </tfoot>
+  </table>
+  <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_BS.js"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_AD.js"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+
+  <script src="./js/national_events.js"></script>
+</body>
+
+</html>
