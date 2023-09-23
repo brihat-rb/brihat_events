@@ -68,11 +68,26 @@
       right: 0px;
     }
 
-    td:hover {
+    tbody>tr>td:hover {
       border: 2px solid maroon !important;
       color: maroon !important;
-      background-color: darkgray !important;
-      --bs-table-striped-bg: darkgray !important;
+      background-color: cyan !important;
+      --bs-table-striped-bg: cyan !important;
+    }
+
+    tbody>tr:hover,
+    .hoverclass {
+      background-color: lightblue !important;
+      --bs-table-striped-bg: lightblue !important;
+      --bs-table-bg: lightblue !important;
+    }
+
+    .thhoverclass {
+      background-color: lightblue !important;
+      --bs-table-striped-bg: lightblue !important;
+      --bs-table-bg: lightblue !important;
+      color: black;
+      --bs-table-striped-color: black;
     }
   </style>
 </head>
@@ -95,7 +110,7 @@
         <th class="text-center" title="September" scope="col">September</th>
         <th class="text-center" title="October" scope="col">October</th>
         <th class="text-center" title="November" scope="col">November</th>
-        <th class="text-center" title="Decenber" scope="col">Decenber</th>
+        <th class="text-center" title="December" scope="col">December</th>
         <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &dArr;</th>
       </tr>
     </thead>
@@ -114,7 +129,7 @@
         <th class="text-center" title="September" scope="col">September</th>
         <th class="text-center" title="October" scope="col">October</th>
         <th class="text-center" title="November" scope="col">November</th>
-        <th class="text-center" title="Decenber" scope="col">Decenber</th>
+        <th class="text-center" title="December" scope="col">December</th>
         <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &uArr;</th>
       </tr>
       <tr>
@@ -131,6 +146,25 @@
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
     crossorigin="anonymous"></script>
 
+  <script>
+    function handle_cell_hover() {
+      var total_rows = document.getElementById("table_body").rows.length;
+      for (var i = 0; i < total_rows; i++) {
+        document.getElementById("table_body").rows[i].cells[this.cellIndex].classList.add("hoverclass");
+      }
+      document.getElementsByTagName("table")[0].rows[0].cells[this.cellIndex].classList.add("thhoverclass");
+      document.getElementsByTagName("table")[0].rows[32].cells[this.cellIndex].classList.add("thhoverclass");
+    }
+
+    function handle_cell_hoverout() {
+      var total_rows = document.getElementById("table_body").rows.length;
+      for (var i = 0; i < total_rows; i++) {
+        document.getElementById("table_body").rows[i].cells[this.cellIndex].classList.remove("hoverclass");
+      }
+      document.getElementsByTagName("table")[0].rows[0].cells[this.cellIndex].classList.remove("thhoverclass");
+      document.getElementsByTagName("table")[0].rows[32].cells[this.cellIndex].classList.remove("thhoverclass");
+    }
+  </script>
   <script src="./js/international_events.js"></script>
 </body>
 

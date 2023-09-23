@@ -19,12 +19,16 @@ event_req.onload = function () {
       if (events.hasOwnProperty(event_key)) {
         td_elem.innerHTML = events[event_key][0].replaceAll(" / ", "<br />");
         td_elem.setAttribute("class", "text-center text-nowrap");
+        td_elem.addEventListener("mouseover", handle_cell_hover, false);
+        td_elem.addEventListener("mouseout", handle_cell_hoverout, false);
         td_elem.setAttribute("title", AD_MONTHS[month - 1] + " " + date + " | " + AD_MONTHS_NEP[month - 1] + " " + arabic_number_to_nepali(date) + "\n" + events[event_key][1].replaceAll(" / ", "\n"))
         tr_elem.appendChild(td_elem);
       }
       else {
         td_elem.innerHTML = "---";
         td_elem.setAttribute("class", "text-center text-nowrap");
+        td_elem.addEventListener("mouseover", handle_cell_hover, false);
+        td_elem.addEventListener("mouseout", handle_cell_hoverout, false);
         tr_elem.appendChild(td_elem);
       }
     }
