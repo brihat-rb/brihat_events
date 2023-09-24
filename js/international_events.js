@@ -46,3 +46,10 @@ event_req.onerror = function () {
 }
 
 event_req.send();
+
+var today = new Date();
+var today_row = today.getDate() - 1;
+var today_column = today.getMonth() + 1;
+today_td = document.getElementById('table_body').rows[today_row].cells[today_column];
+today_td.classList.add("cell-today");
+scroll_to_today_element(today_td);

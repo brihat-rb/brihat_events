@@ -78,6 +78,48 @@ function scroll_to_today() {
     }
 }
 
+
+function scroll_to_today_element(today_element) {
+  window.scrollTo(0, 0);
+
+  if (today_element != null) {
+    var rect = today_element.getBoundingClientRect()
+    var viewHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var viewWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+    window.scroll({
+      top: rect.top + rect.height / 2 - viewHeight / 2,
+      left: rect.left + rect.width / 2 - viewWidth / 2,
+      behavior: 'smooth' // smooth scroll
+    });
+  }
+}
+
+function get_bs_date_detail(bs_year, bs_month, bs_date) {
+  var json_url = "";
+  var date_detail = '{}';
+
+  if (bs_year >= 2076 && bs_year <= 2080) {
+    json_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/' + bs_year + '_detailed.json';
+  }
+  else if (bs_year >= 2070 && bs_year <= 2075) {
+    json_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/' + bs_year + '.json';
+  }
+  else {
+    return '{}';
+  }
+
+  var nepal_event_req = new XMLHttpRequest();
+  nepal_event_req.open('GET', json_url, false);
+  nepal_event_req.onload = function () {
+    var events = JSON.parse(this.response);
+    date_detail = JSON.stringify(events.data[parseInt(bs_month) - 1][parseInt(bs_date) - 1]);
+  }
+  nepal_event_req.send();
+
+  return date_detail;
+}
+
 function set_saturday_color() {
     var all_saturday_spans = document.getElementsByClassName("saturday");
     for(var i = 0; i < all_saturday_spans.length; i++) {

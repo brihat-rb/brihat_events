@@ -41,6 +41,7 @@ event_req.onload = function () {
       }
 
       var td_elems = document.createElement('td');
+      td_elems.setAttribute("id", month + "_" + tithi);
       td_elems.setAttribute("class", "text-center text-nowrap");
       td_elems.setAttribute("title", month + " (" + events[month]["eq_names"][0] + ") " + tithi);
       var individual_events = events[month][tithi];
@@ -62,7 +63,7 @@ event_req.onload = function () {
     td_month_right.innerHTML += "<br />(" + events[month]["eq_names"][0] + ")";
     td_month_right.setAttribute("class", "text-center text-nowrap");
     tr_elem.appendChild(td_month_right);
-    
+
     document.getElementById("table_body").appendChild(tr_elem);
   }
 }
@@ -72,3 +73,11 @@ event_req.onerror = function () {
 }
 
 event_req.send();
+
+var today_ad = new Date();
+var today_bs = convert_ad_to_bs(today_ad.getFullYear(), today_ad.getMonth() + 1, today_ad.getDate()).split(" ");
+var today_bs_detail = JSON.parse(get_bs_date_detail(today_bs[0], today_bs[1], today_bs[2]));
+var today_id = today_bs_detail.lunar_month + "_" + today_bs_detail.tithi;
+today_td = document.getElementById(today_id);
+today_td.classList.add("cell-today");
+scroll_to_today_element(today_td);

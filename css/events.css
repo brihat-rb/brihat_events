@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Laila';
+    font-weight: bold;
+    font-size: 12px;
+    user-select: none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .cell-today {
+    border: teal solid 2px !important;
+    background-color: gold !important;
+    --bs-table-striped-bg: gold !important;
+    color: maroon !important;
+    --bs-table-striped-color: maroon !important;
+    font-weight: bolder;
+  }
+
+  .footer {
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+  }
+
+  td:hover {
+    border: 2px solid maroon !important;
+    color: maroon !important;
+    background-color: darkgray !important;
+    --bs-table-striped-bg: darkgray !important;
+  }

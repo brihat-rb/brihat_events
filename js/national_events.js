@@ -42,3 +42,9 @@ event_req.onerror = function () {
 }
 
 event_req.send();
+
+var today_ad = new Date();
+var today_bs = convert_ad_to_bs(today_ad.getFullYear(), today_ad.getMonth() + 1, today_ad.getDate()).split(" ");
+today_td = document.getElementById('table_body').rows[today_bs[2] - 1].cells[today_bs[1]];
+today_td.classList.add("cell-today");
+scroll_to_today_element(today_td);
