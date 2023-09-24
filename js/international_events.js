@@ -34,7 +34,7 @@ event_req.onload = function () {
     }
 
     var td_date_right = document.createElement('td');
-    td_date_right.innerHTML = arabic_number_to_nepali(date);
+    td_date_right.innerHTML = date;
     td_date_right.setAttribute("class", "text-center");
     tr_elem.appendChild(td_date_right);
     document.getElementById("table_body").appendChild(tr_elem);
