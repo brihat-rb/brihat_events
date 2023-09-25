@@ -29,7 +29,7 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Laila&display=swap" />
   <link rel="stylesheet" href="./css/events.css" />
-  
+
   <style>
     th:nth-child(1),
     td:nth-child(1) {
@@ -42,56 +42,70 @@
       position: sticky;
       right: 0px;
     }
+
+    @media screen and (max-width: 700px) {
+
+      th:nth-child(14),
+      td:nth-child(14) {
+        position: inherit;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <table id="event_table" class="table table-sm table-success table-striped-columns table-bordered"
-    style="color: darkgreen; --bs-table-striped-color: darkblue; --bs-table-hover-color: maroon; width:100%;">
-    <thead class="header table-dark table align-middle">
-      <!-- <tr><td colspan="18" class="text-center">Compiled By Brihat (reachme@brihatrb.com.np)</td></tr> -->
-      <tr>
-        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">गते &dArr; | महिना &rArr;</th>
-        <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
-        <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
-        <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
-        <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
-        <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
-        <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
-        <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
-        <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
-        <th class="text-center" title="पौष" scope="col">पौष</th>
-        <th class="text-center" title="माघ" scope="col">माघ</th>
-        <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
-        <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
-        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &dArr;</th>
-      </tr>
-    </thead>
-    <tbody id="table_body"></tbody>
-    <tfoot class="footer table-dark text-center">
-      <tr>
-        <th class="text-center text-nowrap" title="गते &uArr; | महिना &rArr;" scope="col">गते &uArr; | महिना &rArr;</th>
-        <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
-        <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
-        <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
-        <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
-        <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
-        <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
-        <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
-        <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
-        <th class="text-center" title="पौष" scope="col">पौष</th>
-        <th class="text-center" title="माघ" scope="col">माघ</th>
-        <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
-        <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
-        <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &uArr;</th>
-      </tr>
-      <tr>
-        <td colspan="4" class="text-center">Compiled By Brihat Ratna Bajracharya</td>
-        <td colspan="5" class="text-center">May not be 100 % accurate</td>
-        <td colspan="5" class="text-center">reachme@brihatrb.com.np</td>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="table-responsive-xs">
+    <table id="event_table" class="table table-sm table-success table-striped-columns table-bordered"
+      style="color: darkgreen; --bs-table-striped-color: darkblue; --bs-table-hover-color: maroon; width:100%;">
+      <thead class="header table-dark table align-middle">
+        <!-- <tr><td colspan="18" class="text-center">Compiled By Brihat (reachme@brihatrb.com.np)</td></tr> -->
+        <tr>
+          <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">गते &dArr; | महिना &rArr;
+          </th>
+          <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
+          <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
+          <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
+          <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
+          <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
+          <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
+          <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
+          <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
+          <th class="text-center" title="पौष" scope="col">पौष</th>
+          <th class="text-center" title="माघ" scope="col">माघ</th>
+          <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
+          <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
+          <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &dArr;
+          </th>
+        </tr>
+      </thead>
+      <tbody id="table_body"></tbody>
+      <tfoot class="footer table-dark text-center">
+        <tr>
+          <th class="text-center text-nowrap" title="गते &uArr; | महिना &rArr;" scope="col">गते &uArr; | महिना &rArr;
+          </th>
+          <th class="text-center" title="वैशाख" scope="col">वैशाख</th>
+          <th class="text-center" title="ज्येष्ठ" scope="col">ज्येष्ठ</th>
+          <th class="text-center" title="आषाढ" scope="col">आषाढ</th>
+          <th class="text-center" title="श्रावण" scope="col">श्रावण</th>
+          <th class="text-center" title="भाद्र" scope="col">भाद्र</th>
+          <th class="text-center" title="आश्विन" scope="col">आश्विन</th>
+          <th class="text-center" title="कार्तिक" scope="col">कार्तिक</th>
+          <th class="text-center" title="मंसिर" scope="col">मंसिर</th>
+          <th class="text-center" title="पौष" scope="col">पौष</th>
+          <th class="text-center" title="माघ" scope="col">माघ</th>
+          <th class="text-center" title="फाल्गुण" scope="col">फाल्गुण</th>
+          <th class="text-center" title="चैत्र" scope="col">चैत्र</th>
+          <th class="text-center text-nowrap" title="गते &dArr; | महिना &rArr;" scope="col">&lArr; महिना | गते &uArr;
+          </th>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-center">Compiled By Brihat Ratna Bajracharya</td>
+          <td colspan="5" class="text-center">May not be 100 % accurate</td>
+          <td colspan="5" class="text-center">reachme@brihatrb.com.np</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
   <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_BS.js"
     crossorigin="anonymous"></script>

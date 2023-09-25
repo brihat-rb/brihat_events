@@ -29,7 +29,7 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Laila&display=swap" />
   <link rel="stylesheet" href="./css/events.css" />
-  
+
   <style>
     th:nth-child(1),
     td:nth-child(1) {
@@ -64,56 +64,70 @@
       color: black;
       --bs-table-striped-color: black;
     }
+
+    @media screen and (max-width: 700px) {
+
+      th:nth-child(14),
+      td:nth-child(14) {
+        position: inherit;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <table id="event_table" class="table table-sm table-success table-striped-columns table-bordered"
-    style="color: darkgreen; --bs-table-striped-color: darkblue; --bs-table-hover-color: maroon; width:100%;">
-    <thead class="header table-dark table align-middle">
-      <!-- <tr><td colspan="18" class="text-center">Compiled By Brihat (reachme@brihatrb.com.np)</td></tr> -->
-      <tr>
-        <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">Date &dArr; | Month &rArr;</th>
-        <th class="text-center" title="January" scope="col">January</th>
-        <th class="text-center" title="February" scope="col">February</th>
-        <th class="text-center" title="March" scope="col">March</th>
-        <th class="text-center" title="April" scope="col">April</th>
-        <th class="text-center" title="May" scope="col">May</th>
-        <th class="text-center" title="June" scope="col">June</th>
-        <th class="text-center" title="July" scope="col">July</th>
-        <th class="text-center" title="August" scope="col">August</th>
-        <th class="text-center" title="September" scope="col">September</th>
-        <th class="text-center" title="October" scope="col">October</th>
-        <th class="text-center" title="November" scope="col">November</th>
-        <th class="text-center" title="December" scope="col">December</th>
-        <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &dArr;</th>
-      </tr>
-    </thead>
-    <tbody id="table_body"></tbody>
-    <tfoot class="footer table-dark text-center">
-      <tr>
-        <th class="text-center text-nowrap" title="Date &uArr; | Month &rArr;" scope="col">Date &uArr; | Month &rArr;</th>
-        <th class="text-center" title="January" scope="col">January</th>
-        <th class="text-center" title="February" scope="col">February</th>
-        <th class="text-center" title="March" scope="col">March</th>
-        <th class="text-center" title="April" scope="col">April</th>
-        <th class="text-center" title="May" scope="col">May</th>
-        <th class="text-center" title="June" scope="col">June</th>
-        <th class="text-center" title="July" scope="col">July</th>
-        <th class="text-center" title="August" scope="col">August</th>
-        <th class="text-center" title="September" scope="col">September</th>
-        <th class="text-center" title="October" scope="col">October</th>
-        <th class="text-center" title="November" scope="col">November</th>
-        <th class="text-center" title="December" scope="col">December</th>
-        <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &uArr;</th>
-      </tr>
-      <tr>
-        <td colspan="4" class="text-center">Compiled By Brihat Ratna Bajracharya</td>
-        <td colspan="5" class="text-center">May not be 100 % accurate</td>
-        <td colspan="5" class="text-center">reachme@brihatrb.com.np</td>
-      </tr>
-    </tfoot>
-  </table>
+  <div class="table-responsive-xs">
+    <table id="event_table" class="table table-sm table-success table-striped-columns table-bordered"
+      style="color: darkgreen; --bs-table-striped-color: darkblue; --bs-table-hover-color: maroon; width:100%;">
+      <thead class="header table-dark table align-middle">
+        <!-- <tr><td colspan="18" class="text-center">Compiled By Brihat (reachme@brihatrb.com.np)</td></tr> -->
+        <tr>
+          <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">Date &dArr; | Month &rArr;
+          </th>
+          <th class="text-center" title="January" scope="col">January</th>
+          <th class="text-center" title="February" scope="col">February</th>
+          <th class="text-center" title="March" scope="col">March</th>
+          <th class="text-center" title="April" scope="col">April</th>
+          <th class="text-center" title="May" scope="col">May</th>
+          <th class="text-center" title="June" scope="col">June</th>
+          <th class="text-center" title="July" scope="col">July</th>
+          <th class="text-center" title="August" scope="col">August</th>
+          <th class="text-center" title="September" scope="col">September</th>
+          <th class="text-center" title="October" scope="col">October</th>
+          <th class="text-center" title="November" scope="col">November</th>
+          <th class="text-center" title="December" scope="col">December</th>
+          <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &dArr;
+          </th>
+        </tr>
+      </thead>
+      <tbody id="table_body"></tbody>
+      <tfoot class="footer table-dark text-center">
+        <tr>
+          <th class="text-center text-nowrap" title="Date &uArr; | Month &rArr;" scope="col">Date &uArr; | Month &rArr;
+          </th>
+          <th class="text-center" title="January" scope="col">January</th>
+          <th class="text-center" title="February" scope="col">February</th>
+          <th class="text-center" title="March" scope="col">March</th>
+          <th class="text-center" title="April" scope="col">April</th>
+          <th class="text-center" title="May" scope="col">May</th>
+          <th class="text-center" title="June" scope="col">June</th>
+          <th class="text-center" title="July" scope="col">July</th>
+          <th class="text-center" title="August" scope="col">August</th>
+          <th class="text-center" title="September" scope="col">September</th>
+          <th class="text-center" title="October" scope="col">October</th>
+          <th class="text-center" title="November" scope="col">November</th>
+          <th class="text-center" title="December" scope="col">December</th>
+          <th class="text-center text-nowrap" title="Date &dArr; | Month &rArr;" scope="col">&lArr; Month | Date &uArr;
+          </th>
+        </tr>
+        <tr>
+          <td colspan="4" class="text-center">Compiled By Brihat Ratna Bajracharya</td>
+          <td colspan="5" class="text-center">May not be 100 % accurate</td>
+          <td colspan="5" class="text-center">reachme@brihatrb.com.np</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
   <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS.js" crossorigin="anonymous"></script>
   <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_AD.js"
     crossorigin="anonymous"></script>
