@@ -300,7 +300,7 @@ function show_international_event() {
                 key_list = key.split("-");
                 internat_events["data"][key][0].split("/").forEach(event => {
                     span_html += "<span id='" + key +"_EN'>[" + index + "] ";
-                    span_html += AD_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
+                    span_html += AD_MONTHS[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
                     span_html += "</span>";
                 });
