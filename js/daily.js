@@ -102,9 +102,9 @@ function get_event(bs_year, bs_month, bs_date) {
     nepali_date += '><span id="' + date_id + '"><mark class="bg-white rounded';
     nepali_date += ad_day == 6 ? ' text-danger ' : public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key] ? public_holidays[bs_year][nat_events_key][1] == "national" ? ' text-danger ' : ' text-primary ' : ' text-dark ' : ' text-dark ';
     nepali_date += 'display-6">' + arabic_number_to_nepali(bs_year) + " " + BS_MONTHS_NEP[bs_month - 1];
-    nepali_date += " " + arabic_number_to_nepali(bs_date) + ", " + NEPALI_DAYS[ad_day] + '</mark></span></div><br />';
+    nepali_date += " " + arabic_number_to_nepali(bs_date) + ", " + NEPALI_DAYS[ad_day] + '</mark></span></div>';
 
-    let info_content = "<div><br /></div>" + nepali_date + '<div id="all_events"><div id="date_info">';
+    let info_content = nepali_date + '<div id="all_events"><div><br /></div><div id="date_info">';
     var has_lunar_events = false;
 
     let solar_ns_date_list = convert_bs_to_ns(bs_year, bs_month, bs_date).split(" ");
@@ -262,12 +262,14 @@ function get_event(bs_year, bs_month, bs_date) {
             ss = arabic_number_to_nepali(ss.split(":")[0]) + " : " + arabic_number_to_nepali(ss.split(":")[1]);
         }
 
-        info_content += "<div></div><div id='sunrise' class='fs-5 fw-bold text-white'><i class='fa fa-sun-o' aria-hidden='true'></i>&ensp;" + sr + "</div><div>";
+        info_content += "<div></div><div id='sunrise' class='fs-5 fw-bold text-white'><i class='fa fa-sun-o' aria-hidden='true'></i>&ensp;" + sr + "</div><div class='fs-6 lh-lg fw-bold text-white'>";
+        info_content += "Brihat";
         info_content += "</div><div id='sunset' class='fs-5 fw-bold text-white'><i class='fa fa-moon-o' aria-hidden='true'></i>&ensp;" + ss + "</div><div></div>";
     }
     else {
-        info_content += "&nbsp;";
+        info_content += "<div class='fs-6 lh-lg fw-bold text-white'>Brihat</div>";
     }
+    // info_content += "</div><div><br /><br /></div>";
     document.getElementById("event_here").innerHTML = info_content;
     document.getElementById("title").innerHTML = arabic_number_to_nepali(current_year) + " " + BS_MONTHS_NEP[current_month - 1] + " " + arabic_number_to_nepali(current_date) + " (" + NEPALI_DAYS[ad_day] + ") | Brihat Events";
 }

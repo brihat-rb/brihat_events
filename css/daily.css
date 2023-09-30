@@ -4,6 +4,7 @@
     font-family: Laila;
     font-size: clamp(0.9rem, 2.0vw, 1.0rem);
     scrollbar-width: none;
+    transition: linear 0.25s;
 }
 
 body {
@@ -22,10 +23,10 @@ body {
 }
 
 #all_events {
-    display: flex;
+    display: inline-block;
     font-weight: bold;
-    justify-content: space-evenly;
-    flex-direction: column;
+    max-height: 75vh;
+    overflow-y: scroll;
 }
 
 .national {
