@@ -1,0 +1,159 @@
+* {
+    user-select: none;
+    line-height: 1.5;
+    font-family: Laila;
+    font-size: clamp(0.9rem, 2.0vw, 1.0rem);
+    scrollbar-width: none;
+}
+
+body {
+    display: grid;
+    align-items: center;
+    height: 95vh;
+}
+
+#date_info {
+    color: darkblue;
+}
+
+#date>span {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#all_events {
+    display: flex;
+    font-weight: bold;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.national {
+    color: rgb(var(--bs-danger-rgb));
+}
+
+.specific {
+    color: rgb(var(--bs-primary-rgb));
+}
+
+.display-6 {
+    font-weight: bolder;
+}
+
+#ltopic,
+#ntopic,
+#itopic,
+#otopic,
+#snstopic,
+#phtopic {
+    font-variant: small-caps;
+    /* text-decoration: underline; */
+    font-weight: bold;
+}
+
+#ltopic>mark,
+#ntopic>mark,
+#itopic>mark,
+#otopic>mark,
+#snstopic>mark,
+#phtopic>mark {
+    width: 250px;
+    display: inline-block;
+}
+
+#lunar_mark {
+    color: white;
+    background-color: purple;
+}
+
+#lunar_events {
+    color: purple;
+}
+
+#national_event {
+    color: rgb(var(--bs-success-rgb));
+}
+
+#international_event {
+    color: rgb(var(--bs-info-rgb));
+}
+
+#other_event {
+    color: rgb(var(--bs-dark-rgb));
+}
+
+#solar_ns_event {
+    color: rgb(var(--bs-secondary-rgb));
+}
+
+#public_holiday_box {
+    display: flex;
+    justify-content: space-around;
+}
+
+#sunrise_sunset_info {
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: row; */
+}
+
+#controls {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: clamp(0.60rem, 2.0vw, 0.75rem);
+    background-color: white;
+    color: gray;
+    text-decoration: none;
+}
+
+#mobile_controls {
+    display: none !important;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: clamp(0.60rem, 2.0vw, 0.75rem);
+    background-color: white;
+    color: gray;
+    text-decoration: none;
+}
+
+#controls>div>a {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold
+}
+
+#mobile_controls>div>a {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: bold
+}
+
+@media screen and (min-width: 800px) {
+    #date_info, #flex_lunar, #flex_national, #flex_international, #flex_ph {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #date_info>span, #flex_lunar>div, #flex_national>div, #flex_international>div, #flex_ph>div {
+        flex: 1;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #controls {
+        display: none !important;
+    }
+
+    #mobile_controls {
+        display: flex !important;
+    }
+}
