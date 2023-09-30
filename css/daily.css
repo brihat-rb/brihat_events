@@ -15,6 +15,7 @@ body {
 
 #date_info {
     color: darkblue;
+    width: 100vw;
 }
 
 #date>span {
