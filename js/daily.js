@@ -250,7 +250,7 @@ function get_event(bs_year, bs_month, bs_date) {
             info_content += "<div>&nbsp;</div>";
     }
 
-    info_content += "<div id='sunrise_sunset_info' class='";
+    info_content += "</div><div id='sunrise_sunset_info' class='";
     info_content += has_holiday_events ? public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key][1] == "national" ? "bg-danger" : "bg-primary" : "bg-dark" : "bg-dark";
     info_content += "'>";
 
@@ -268,9 +268,8 @@ function get_event(bs_year, bs_month, bs_date) {
     else {
         info_content += "&nbsp;";
     }
-    info_content += "</div><div><br /><br /></div>";
-
     document.getElementById("event_here").innerHTML = info_content;
+    document.getElementById("title").innerHTML = arabic_number_to_nepali(current_year) + " " + BS_MONTHS_NEP[current_month - 1] + " " + arabic_number_to_nepali(current_date) + " (" + NEPALI_DAYS[ad_day] + ") | Brihat Events";
 }
 
 get_event(bs_year, bs_month, bs_date);
