@@ -118,7 +118,7 @@ function next_year(year, month, day) {
 function previous_year(year, month, day) {
     // Exceptional Case
     if (year == Object.keys(BS_CALENDAR_DATA)[0]) {
-        alert("No Previous Month Data Available, Sorry!");
+        alert("No Previous Year Data Available, Sorry!");
         return;
     }
 
