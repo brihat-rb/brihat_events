@@ -26,7 +26,7 @@ body {
 #all_events {
     display: inline-block;
     font-weight: bold;
-    max-height: 75vh;
+    max-height: 60vh;
     overflow-y: scroll;
 }
 
