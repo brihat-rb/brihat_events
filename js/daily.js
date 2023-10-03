@@ -288,4 +288,4 @@ function get_event(bs_year, bs_month, bs_date) {
     document.getElementById("title").innerHTML = arabic_number_to_nepali(current_year) + " " + BS_MONTHS_NEP[current_month - 1] + " " + arabic_number_to_nepali(current_date) + " (" + NEPALI_DAYS[ad_day] + ") | Brihat Events";
 }
 
-// get_event(bs_year, bs_month, bs_date);
+get_event(bs_year, bs_month, bs_date);
