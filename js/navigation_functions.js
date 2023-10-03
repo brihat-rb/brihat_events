@@ -132,7 +132,7 @@ function previous_year(year, month, day) {
 
 function isScrollable() {
     a = document.getElementById("all_events");
-    if (a.scrollHeight > a.clientHeight) {
+    if (a.scrollHeight > a.clientHeight + 15) {
         return true;
     } else {
         return false;
