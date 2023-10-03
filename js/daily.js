@@ -250,7 +250,7 @@ function get_event(bs_year, bs_month, bs_date) {
             info_content += "<div>&nbsp;</div>";
     }
 
-    info_content += "</div><div id='scroll_element' class='bounce'>&#129091;</div>";
+    info_content += "</div><div id='scroll_element' class='bounce'>&#x1F843;</div>";
     info_content += "</div><div id='sunrise_sunset_info' class='";
     info_content += has_holiday_events ? public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key][1] == "national" ? "bg-danger" : "bg-primary" : "bg-dark" : "bg-dark";
     info_content += "'>";
