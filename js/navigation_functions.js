@@ -131,8 +131,17 @@ function previous_year(year, month, day) {
 }
 
 function isScrollable() {
-    a = document.getElementById("all_events");
-    if (a.scrollHeight > a.clientHeight + 15) {
+    var a = document.getElementById("all_events");
+    if (a.scrollHeight > a.clientHeight + 25) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function isScrollableUp() {
+    var a = document.getElementById("all_events");
+    if (a.scrollTop > 30) {
         return true;
     } else {
         return false;

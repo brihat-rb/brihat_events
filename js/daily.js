@@ -104,7 +104,10 @@ function get_event(bs_year, bs_month, bs_date) {
     nepali_date += 'display-6">' + arabic_number_to_nepali(bs_year) + " " + BS_MONTHS_NEP[bs_month - 1];
     nepali_date += " " + arabic_number_to_nepali(bs_date) + ", " + NEPALI_DAYS[ad_day] + '</mark></span></div>';
 
-    let info_content = nepali_date + '<div id="all_events"><div><br /></div><div id="date_info">';
+    let info_content = nepali_date;
+    info_content += '<div id="scroll_up_element" class="bounce_up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>';
+    info_content += '<div id="all_events"><div><br /></div><div id="date_info">';
+    
     var has_lunar_events = false;
 
     let solar_ns_date_list = convert_bs_to_ns(bs_year, bs_month, bs_date).split(" ");
@@ -274,15 +277,23 @@ function get_event(bs_year, bs_month, bs_date) {
     document.getElementById("event_here").innerHTML = info_content;
 
     var scroll_element = document.getElementById("scroll_element");
+    var scroll_up_element = document.getElementById("scroll_up_element");
+
     scroll_element.style.display = isScrollable() ? "block" : "none";
+    scroll_up_element.style.display = isScrollableUp() ? "block" : "none";
 
     var all_events_div = document.getElementById("all_events");
     all_events_div.addEventListener("scroll", (event) => {
         const { scrollHeight, scrollTop, clientHeight } = event.target;
-        if (Math.abs(scrollHeight - clientHeight - scrollTop) <= 1)
+        if (Math.abs(scrollHeight - clientHeight - scrollTop) <= 35)
             scroll_element.style.display = "none";
         else
             scroll_element.style.display = "block";
+
+        if (Math.abs(scrollTop) < 30)
+            scroll_up_element.style.display = "none";
+        else
+            scroll_up_element.style.display = "block";
     });
 
     document.getElementById("title").innerHTML = arabic_number_to_nepali(current_year) + " " + BS_MONTHS_NEP[current_month - 1] + " " + arabic_number_to_nepali(current_date) + " (" + NEPALI_DAYS[ad_day] + ") | Brihat Events";
