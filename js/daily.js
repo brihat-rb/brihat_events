@@ -107,25 +107,29 @@ function get_event(bs_year, bs_month, bs_date) {
     let info_content = nepali_date;
     info_content += '<div id="scroll_up_element" class="bounce_up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>';
     info_content += '<div id="all_events"><div><br /></div><div id="date_info">';
-    
+
     var has_lunar_events = false;
 
     let solar_ns_date_list = convert_bs_to_ns(bs_year, bs_month, bs_date).split(" ");
     let solar_ns_date = "सौ. ने. सं. " + arabic_number_to_nepali(solar_ns_date_list[0]) + " " + NS_NEP[solar_ns_date_list[1] - 1] + " " + arabic_number_to_nepali(solar_ns_date_list[2]);
     let ad_full_date = "<span id='ad_data'>" + ad_year + " " + AD_MONTHS[ad_month - 1] + " " + ad_date + "</span><br /></div>";
 
+    var lunar_month = "";
+    var lunar_tithi = "";
     if (lunar_json_loaded) {
         info_content += '<span id="solar_nepal_sambat">' + solar_ns_date + "</span><br /><span id='tithi'>";
         if (events.data[bs_month - 1][bs_date - 1].hasOwnProperty("ns_year")) {
             info_content += "ने. सं. " + arabic_number_to_nepali(events.data[bs_month - 1][bs_date - 1].ns_year) + " ";
         }
         if (events.data[bs_month - 1][bs_date - 1].hasOwnProperty("lunar_month")) {
-            info_content += events.data[bs_month - 1][bs_date - 1].lunar_month;
+            lunar_month = events.data[bs_month - 1][bs_date - 1].lunar_month;
+            info_content += lunar_month;
         }
         if (events.data[bs_month - 1][bs_date - 1].hasOwnProperty("pakshya")) {
             info_content += " (" + events.data[bs_month - 1][bs_date - 1].pakshya + ") ";
         }
-        info_content += events.data[bs_month - 1][bs_date - 1].tithi + '</span><br />' + ad_full_date + "<div>&nbsp;</div>";
+        lunar_tithi = events.data[bs_month - 1][bs_date - 1].tithi;
+        info_content += lunar_tithi + '</span><br />' + ad_full_date + "<div>&nbsp;</div>";
 
         has_lunar_events = false;
         if (events.data[bs_month - 1][bs_date - 1].lunar_event_one || events.data[bs_month - 1][bs_date - 1].lunar_event_two || events.data[bs_month - 1][bs_date - 1].lunar_event_three) {
@@ -140,6 +144,26 @@ function get_event(bs_year, bs_month, bs_date) {
             info_content += '<div>' + events.data[bs_month - 1][bs_date - 1].lunar_event_three.replaceAll(" / ", "</div><div>") + '</div>';
         if (events.data[bs_month - 1][bs_date - 1].lunar_event_one || events.data[bs_month - 1][bs_date - 1].lunar_event_two || events.data[bs_month - 1][bs_date - 1].lunar_event_three)
             info_content += '</div></div>';
+
+        if (pakshya_events_json_loaded) {
+            var pakshya_events_list = pakshya_events[lunar_month][lunar_tithi];
+            if (pakshya_events_list.length > 0) {
+                info_content += "<div id='pakshya_events'>";
+
+                if (!info_content.includes("Lunar Event(s)"))
+                    info_content += '<div id="ptopic" class="p-1"><mark id="pakshya_mark" class="rounded text-dark">Pakshya Event(s)</mark></div>';
+
+                info_content += "<div id='flex_pakshya'>";
+
+                pakshya_events_list.forEach(event => {
+                    if (!info_content.includes(event))
+                        info_content += "<div>" + event + "</div>";
+                });
+
+                info_content += "</div></div>";
+                has_lunar_events = true;
+            }
+        }
     }
     else {
         info_content += "<span id='solar_nepal_sambat'>" + solar_ns_date + "</span><br />" + ad_full_date;

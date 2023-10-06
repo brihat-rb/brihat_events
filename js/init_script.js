@@ -3,18 +3,21 @@ var int_event_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.githu
 var solar_event_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/solar_ns_events.json';
 var other_event_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/other_calendar_events.json';
 var public_holiday_url = 'https://raw.githubusercontent.com/brihat-rb/brihat_calendar/main/data/public_holidays_in_nepal.json';
+var pakshya_events_url = 'https://raw.githubusercontent.com/brihat-rb/brihat_events/master/data/events.json';
 
 var nat_event_req = new XMLHttpRequest();
 var int_event_req = new XMLHttpRequest();
 var solar_event_req = new XMLHttpRequest();
 var other_event_req = new XMLHttpRequest();
 var public_holiday_req = new XMLHttpRequest();
+var pakshya_events_req = new XMLHttpRequest();
 
 var nevents = "";
 var ievents = "";
 var snsevents = "";
 var oevents = "";
 var public_holidays = "";
+var pakshya_events = "";
 
 var lunar_json_loaded = false;
 var national_json_loaded = false;
@@ -22,6 +25,7 @@ var international_json_loaded = false;
 var other_event_json_loaded = false;
 var solar_event_json_loaded = false;
 var public_holidays_json_loaded = false;
+var pakshya_events_json_loaded = false;
 var sunrise_json = false;
 var sunset_json = false;
 var sunrisesunset_json_loaded = false;
@@ -109,6 +113,23 @@ try {
 }
 catch (error) {
     public_holidays_json_loaded = false;
+}
+
+pakshya_events_req.open('GET', pakshya_events_url, false);
+pakshya_events_req.onload = function () {
+    pakshya_events = JSON.parse(this.response);
+    pakshya_events_json_loaded = true;
+    console.info("Pakshya Events JSON: Loaded.");
+}
+pakshya_events_req.onerror = function () {
+    pakshya_events_json_loaded = false;
+    console.error("Pakshya Events JSON: Loading Failed.");
+}
+try {
+    pakshya_events_req.send();
+}
+catch (error) {
+    pakshya_eventss_json_loaded = false;
 }
 
 let ad_date_today = new Date()
