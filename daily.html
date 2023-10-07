@@ -33,11 +33,23 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     preload />
   <link href="https://fonts.googleapis.com/css2?family=Laila&display=swap" rel="stylesheet" preload>
+  <link rel="stylesheet" href="./css/loading.css" />
   <link rel="stylesheet" href="./css/daily.css" />
   <link rel="stylesheet" href="./css/scroll.css" />
 </head>
 
-<body id="body_element" class="text-center">
+<body id="body_element" onload="return hide_anim();" class="text-center">
+  <div id="loading" class="lds-grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   <div id="event_here">
     <!-- <div><br></div> -->
     <div class="bg-dark">
@@ -102,9 +114,11 @@
       </div>
     </div>
     <div id='sunrise_sunset_info' class='bg-dark'>
-      <div id='sunrise' class='fs-5 fw-bold text-white'><i class='fa fa-sun-o' aria-hidden='true'></i>&ensp;सूर्योदय</div>
+      <div id='sunrise' class='fs-5 fw-bold text-white'><i class='fa fa-sun-o' aria-hidden='true'></i>&ensp;सूर्योदय
+      </div>
       <div class='fs-6 lh-lg fw-bold text-white'>Brihat</div>
-      <div id='sunset' class='fs-5 fw-bold text-white'><i class='fa fa-moon-o' aria-hidden='true'></i>&ensp;सूर्यास्त</div>
+      <div id='sunset' class='fs-5 fw-bold text-white'><i class='fa fa-moon-o' aria-hidden='true'></i>&ensp;सूर्यास्त
+      </div>
     </div>
   </div>
 
@@ -134,6 +148,11 @@
   <script type="text/javascript" src="./js/daily.js"></script>
   <script type="text/javascript" src="./js/daily_keypress_actions.js"></script>
   <script type="text/javascript" src="./js/daily_swipe_actions.js"></script>
+  <script>
+    function hide_anim() {
+      document.getElementById("loading").style.display = "none";
+    }
+  </script>
 </body>
 
 </html>
