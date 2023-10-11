@@ -11,6 +11,10 @@ body {
     display: grid;
     align-items: center;
     height: 95vh;
+    background: url('../assets/brihat_events_watermark.svg');
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: auto 5%;
 }
 
 #date_info {
@@ -21,6 +25,10 @@ body {
 #date>span {
     font-weight: bold;
     text-decoration: underline;
+}
+
+#event_here {
+    background-color: lavenderblush;
 }
 
 #all_events {
@@ -120,6 +128,10 @@ body {
     background-color: white;
     color: gray;
     text-decoration: none;
+    background: url('../assets/brihat_events_watermark.svg');
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: auto 5%;
 }
 
 #mobile_controls {
@@ -133,6 +145,10 @@ body {
     background-color: white;
     color: gray;
     text-decoration: none;
+    background: url('../assets/brihat_events_watermark.svg');
+    background-repeat: repeat;
+    background-position: center center;
+    background-size: auto 5%;
 }
 
 #controls>div>a {
