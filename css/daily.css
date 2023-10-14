@@ -34,7 +34,6 @@ body {
 
 #past_date_ref {
     left: 45px;
-
 }
 
 #future_date_ref {
@@ -197,6 +196,18 @@ body {
     }
 }
 
+@media screen and (max-width: 600px) {
+    #past_date_ref {
+        left: 25px;
+        font-size: smaller;
+    }
+    
+    #future_date_ref {
+        right: 25px;
+        font-size: smaller;
+    }
+}
+
 @media screen and (max-width: 400px) {
     #controls {
         display: none !important;
@@ -204,5 +215,15 @@ body {
 
     #mobile_controls {
         display: flex !important;
+    }
+
+    #past_date_ref {
+        left: 5px;
+        font-size: smaller;
+    }
+    
+    #future_date_ref {
+        right: 5px;
+        font-size: smaller;
     }
 }
