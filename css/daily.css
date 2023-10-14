@@ -22,9 +22,29 @@ body {
     width: 100vw;
 }
 
+#date {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #date>span {
     font-weight: bold;
-    text-decoration: underline;
+}
+
+#past_date_ref {
+    left: 45px;
+
+}
+
+#future_date_ref {
+    right: 45px;
+}
+
+
+#past_date_ref, #future_date_ref {
+    position: fixed;
+    color: white;
 }
 
 #event_here {

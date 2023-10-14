@@ -98,11 +98,11 @@ function get_event(bs_year, bs_month, bs_date) {
     var date_id = bs_year.toString() + "-" + bs_month.toString() + "-" + bs_date.toString();
 
     let nepali_date = '<div id="date" class="';
-    nepali_date += ad_day == 6 ? 'bg-danger ' : public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key] ? public_holidays[bs_year][nat_events_key][1] == "national" ? "bg-danger " : "bg-primary " : "bg-dark " : "bg-dark ";
-    nepali_date += '><span id="' + date_id + '"><mark class="bg-white rounded';
+    nepali_date += ad_day == 6 ? 'bg-danger ' : public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key] ? public_holidays[bs_year][nat_events_key][1] == 'national' ? 'bg-danger ' : 'bg-primary ' : 'bg-dark ' : 'bg-dark ';
+    nepali_date += '"><span id="past_date_ref"></span><span id="' + date_id + '"><mark class="bg-white rounded';
     nepali_date += ad_day == 6 ? ' text-danger ' : public_holidays[bs_year] ? public_holidays[bs_year][nat_events_key] ? public_holidays[bs_year][nat_events_key][1] == "national" ? ' text-danger ' : ' text-primary ' : ' text-dark ' : ' text-dark ';
     nepali_date += 'display-6">' + arabic_number_to_nepali(bs_year) + " " + BS_MONTHS_NEP[bs_month - 1];
-    nepali_date += " " + arabic_number_to_nepali(bs_date) + ", " + NEPALI_DAYS[ad_day] + '</mark></span></div>';
+    nepali_date += " " + arabic_number_to_nepali(bs_date) + ", " + NEPALI_DAYS[ad_day] + '</mark></span><span id="future_date_ref"></span></div>';
 
     let info_content = nepali_date;
     info_content += '<div id="scroll_up_element" class="bounce_up"><i class="fa fa-angle-double-up" aria-hidden="true"></i></div>';
@@ -321,6 +321,43 @@ function get_event(bs_year, bs_month, bs_date) {
     });
 
     document.getElementById("title").innerHTML = arabic_number_to_nepali(current_year) + " " + BS_MONTHS_NEP[current_month - 1] + " " + arabic_number_to_nepali(current_date) + " (" + NEPALI_DAYS[ad_day] + ") | Brihat Events";
+
+    var date_diff = new Date(new Date(ad_date_current).setHours(0, 0, 0, 0)) - new Date(new Date(ad_date_today).setHours(0, 0, 0, 0));
+    date_diff = Math.floor(date_diff / (1000 * 60 * 60 * 24));
+
+    var future_ref = document.getElementById("future_date_ref");
+    var past_ref = document.getElementById("past_date_ref");
+
+    if (date_diff != 0) {
+        if (date_diff > 0) {
+            if (date_diff == 1) {
+                future_ref.innerHTML = "भोली";
+            }
+            else if (date_diff == 2) {
+                future_ref.innerHTML = "पर्सि";
+            }
+            else if (date_diff % 7 == 0) {
+                future_ref.innerHTML = arabic_number_to_nepali(date_diff / 7) + " हप्ता पछि";
+            }
+            else {
+                future_ref.innerHTML = arabic_number_to_nepali(date_diff) + " दिन पछि";
+            }
+        }
+        if (date_diff < 0) {
+            if (date_diff == -1) {
+                past_ref.innerHTML = "हिजो";
+            }
+            else if (date_diff == -2) {
+                past_ref.innerHTML = "अस्ति";
+            }
+            else if (date_diff % 7 == 0) {
+                past_ref.innerHTML = arabic_number_to_nepali(Math.abs(date_diff / 7)) + " हप्ता अघि";
+            }
+            else {
+                past_ref.innerHTML = arabic_number_to_nepali(Math.abs(date_diff)) + " दिन अघि";
+            }
+        }
+    }
 }
 
 get_event(bs_year, bs_month, bs_date);
