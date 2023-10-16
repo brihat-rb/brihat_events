@@ -157,7 +157,7 @@ sunrise_req.onload = function () {
 }
 sunrise_req.onerror = function () {
     sunrise_json = false;
-    console.error("Lunar Events (for", bs_year, "BS): Loading Failed.");
+    console.error("Sunrise Times (for", ad_year, "AD): Loading Failed.");
 }
 try {
     sunrise_req.send();
@@ -174,7 +174,7 @@ sunset_req.onload = function () {
 }
 sunset_req.onerror = function () {
     sunset_json = false;
-    console.error("Lunar Events (for", bs_year, "BS): Loading Failed.");
+    console.error("Sunset Times (for", ad_year, "AD): Loading Failed.");
 }
 try {
     sunset_req.send();
