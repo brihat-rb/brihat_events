@@ -43,6 +43,15 @@ function scroll_to_today() {
             console.info("  ", today_element.innerText);
             today_element.style.color = "teal";
             today_element.style.fontWeight = "bolder";
+            if(today_element.classList.contains("national")) {
+              today_element.style.backgroundColor = "pink";
+            }
+            else if(today_element.classList.contains("specific")) {
+              today_element.style.backgroundColor = "lightseagreen";
+            }
+            else {
+              today_element.style.backgroundColor = "lightgray";
+            }
             today_element = today_element.nextElementSibling;
         } 
         
@@ -51,6 +60,15 @@ function scroll_to_today() {
                 console.info("  ", today_element_2.innerText);
                 today_element_2.style.color = "teal";
                 today_element_2.style.fontWeight = "bolder";
+                if(today_element_2.classList.contains("national")) {
+                  today_element_2.style.backgroundColor = "pink";
+                }
+                else if(today_element_2.classList.contains("specific")) {
+                  today_element_2.style.backgroundColor = "lightseagreen";
+                }
+                else {
+                  today_element_2.style.backgroundColor = "lightgray";
+                }
                 today_element_2 = today_element_2.nextElementSibling;
             } 
         }
