@@ -69,7 +69,7 @@ function get_event(bs_year, bs_month, bs_date) {
             }
             sunrise_req.send();
 
-            sunset_req.open('GET', sunrise_url, false);
+            sunset_req.open('GET', sunset_url, false);
             sunset_req.onload = function () {
                 sunsets = JSON.parse(this.response);
                 sunset_json = true;
