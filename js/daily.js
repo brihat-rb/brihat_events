@@ -145,7 +145,7 @@ function get_event(bs_year, bs_month, bs_date) {
         if (events.data[bs_month - 1][bs_date - 1].lunar_event_one || events.data[bs_month - 1][bs_date - 1].lunar_event_two || events.data[bs_month - 1][bs_date - 1].lunar_event_three)
             info_content += '</div></div>';
 
-        if (pakshya_events_json_loaded) {
+        if (pakshya_events_json_loaded && (lunar_month != "" && lunar_tithi != "")) {
             var pakshya_events_list = pakshya_events[lunar_month][lunar_tithi];
             if (pakshya_events_list.length > 0) {
                 info_content += "<div id='pakshya_events'>";
@@ -163,6 +163,9 @@ function get_event(bs_year, bs_month, bs_date) {
                 info_content += "</div></div>";
                 has_lunar_events = true;
             }
+        }
+        else {
+            console.warn("No Pakshya Event found for (Lunar Month:Tithi): ", lunar_month, ":", lunar_tithi);
         }
     }
     else {
