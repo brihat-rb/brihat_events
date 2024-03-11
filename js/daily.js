@@ -1,7 +1,7 @@
 function get_event(bs_year, bs_month, bs_date) {
     if (current_year != bs_year) {
         var nepal_event_req = new XMLHttpRequest();
-        if (bs_year >= 2076 && bs_year <= 2080) {
+        if (bs_year >= 2076 && bs_year <= 2081) {
             json_url = 'https://raw.githubusercontent.com/brihat-rb/brihat-rb.github.io/master/calendar/data/' + bs_year + '_detailed.json';
 
             nepal_event_req.open('GET', json_url, false);
@@ -91,7 +91,7 @@ function get_event(bs_year, bs_month, bs_date) {
     nat_events_key = bs_month.toString().padStart(2, '0') + "-" + bs_date.toString().padStart(2, '0');
     sns_events_key = ns_month.toString().padStart(2, '0') + "-" + ns_date.toString().padStart(2, '0');
 
-    if (bs_year < 2070 || bs_year > 2080) {
+    if (bs_year < 2070 || bs_year > 2081) {
         console.warn("No Lunar Data Available for Year:", bs_year, "BS");
     }
 
