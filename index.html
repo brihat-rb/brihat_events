@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="List of Lunar, National and International Events with Public Holidays observed in Nepal" />
-    <meta name="keywords" content="brihat, ratna, bajracharya, events, public holidays, events, national, lunar, international, brihat events" />
+    <meta name="description"
+        content="List of Lunar, National and International Events with Public Holidays observed in Nepal" />
+    <meta name="keywords"
+        content="brihat, ratna, bajracharya, events, public holidays, events, national, lunar, international, brihat events" />
     <meta name="author" content="Brihat Ratna Bajracharya" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,12 +21,13 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@Brihat9" />
     <meta name="twitter:title" content="Brihat Events" />
-    <meta name="twitter:description" content="List of Lunar, National and International Events with Public Holidays observed in Nepal" />
+    <meta name="twitter:description"
+        content="List of Lunar, National and International Events with Public Holidays observed in Nepal" />
     <meta name="twitter:image" content="./assets/brihat_events_logo.png" />
     <meta name="twitter:image:alt" content="Brihat Events" />
 
     <link rel="icon" href="./assets/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="./css/index.css"/>
+    <link rel="stylesheet" href="./css/index.css" />
     <link href="https://fonts.googleapis.com/css2?family=Gotu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Laila&display=swap" rel="stylesheet">
 
@@ -33,11 +37,11 @@
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TL6DN30DV4"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-TL6DN30DV4');
+    gtag('config', 'G-TL6DN30DV4');
 </script>
 
 <body onload="loading_anim();">
@@ -45,9 +49,11 @@
         <img id="loading_anim" src="./assets/loading_anim.svg" alt="Populating Events ..." />
         <span id="loading_title">Brihat Events</span>
         <noscript>Please enable JavaScript and reload</noscript>
-      </div>
+    </div>
     <div id="top">
-        <div id="compiled_by_header">Compiled by: Brihat Ratna Bajracharya <span id="list_view" style="position: absolute; right:5px;"><a style="color: darkblue; text-decoration: none;" href="./index_list.html">View in Searchable List</a></span></div>
+        <div id="compiled_by_header">Compiled by: Brihat Ratna Bajracharya <span id="list_view"
+                style="position: absolute; right:5px;"><a style="color: darkblue; text-decoration: none;"
+                    href="./index_list.html">View in Searchable List</a></span></div>
         <div id="option_div">
             <div class="nav_div" id="national_events" onclick="show_content(1);">National Events</div>
             <div class="nav_div" id="lunar_events" onclick="show_content(2);">Lunar Events</div>
@@ -55,8 +61,8 @@
             <div class="nav_div" id="international_events" onclick="show_content(4);">International Events</div>
         </div>
     </div>
-    <div id = "year_select" class="public">
-        <label for="year">वि. सं. </label> 
+    <div id="year_select" class="public">
+        <label for="year">वि. सं. </label>
         <select name="year" id="year" onchange="show_content();">
             <option value="2076">२०७६</option>
             <option value="2077">२०७७</option>
@@ -74,13 +80,76 @@
             document.getElementById('loading').style.display = "none";
         }
     </script>
-    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_AD.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_BS.js" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/AD_BS.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_AD.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/NS_BS.js"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://calendar.brihatrb.com.np/js/base/AD_BS.js"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="./js/addons.js"></script>
     <script type="text/javascript" src="./js/constants.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
     <script type="text/javascript" src="./js/swipe_actions.js"></script>
+    <script type="text/javascript">
+        const containers = document.getElementsByClassName('scrollable-container');
+        const contents = document.getElementsByClassName('scrollable-content');
+
+        // Check if content overflows
+        function checkOverflow() {
+            for (let i = 0; i < containers.length; i++) {
+                const container = containers[i];
+                const content = contents[i];
+
+                const isOverflowing = content.offsetWidth > container.offsetWidth;
+                if (isOverflowing) {
+                    const scrollDistance = content.offsetWidth - container.offsetWidth + 20; // Calculate distance
+                    const animationDuration = (scrollDistance / 100) + 10 + 's'; // Adjust duration based on distance and pause time
+                    content.style.animationDuration = animationDuration; // Set duration
+
+                    // Adjust keyframes dynamically
+                    const keyframes = `
+                    @keyframes scroll-${i} {
+                        0% {
+                            transform: translateX(0);
+                        }
+                        40% {
+                            transform: translateX(-${scrollDistance}px); /* Scroll until right end is visible */
+                        }
+                        50% {
+                            transform: translateX(-${scrollDistance}px); /* Hold position for delay */
+                        }
+                        90% {
+                            transform: translateX(0); /* Scroll back to starting position */
+                        }
+                        100% {
+                            transform: translateX(0); /* Hold position for delay */
+                        }
+                    }
+                `;
+
+                    // Create a style element for keyframes
+                    const styleSheet = document.createElement("style");
+                    styleSheet.type = "text/css";
+                    styleSheet.innerText = keyframes;
+                    document.head.appendChild(styleSheet);
+
+                    // Apply the specific keyframes animation
+                    content.style.animation = `scroll-${i} ${animationDuration} linear infinite`;
+                } else {
+                    content.style.animationPlayState = 'paused'; // Pause if no overflow
+                    content.style.transform = 'translateX(0)'; // Reset position to the start
+                }
+            }
+        }
+
+        // Initial check
+        checkOverflow();
+
+        // Re-check on window resize
+        window.addEventListener('resize', checkOverflow);
+    </script>
 </body>
+
 </html>

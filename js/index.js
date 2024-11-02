@@ -64,17 +64,17 @@ function show_national_event() {
             nat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 nat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span id='" + key + "_NP'>[" + arabic_numbertext_to_nepali(index) + "] ";
+                    span_html += "<span id='" + key + "_NP' class='scrollable-container'><span class='scrollable-content'>[" + arabic_numbertext_to_nepali(index) + "] ";
                     span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते - ";
                     span_html += event;
-                    span_html += "</span>";
+                    span_html += "</span></span>";
                 });
 
                 nat_events["data"][key][0].split("/").forEach(event => {
-                    span_html += "<span id='" + key + "_EN'>[" + index + "] ";
+                    span_html += "<span id='" + key + "_EN' class='scrollable-container'><span class='scrollable-content'>[" + index + "] ";
                     span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
-                    span_html += "</span>";
+                    span_html += "</span></span>";
                 });
                 span_html += "<br />";
                 index++;
@@ -120,7 +120,7 @@ function show_lunar_event() {
                         // console.log(lunar_events);
                         var has_events = false;
                         if (day_event_array.lunar_event_one != "") {
-                            span_html += "<span class='lunar_event' id=" + day_event_array.date.slice(5, 10) + ">[" + arabic_numbertext_to_nepali(index++) + "] ";
+                            span_html += "<span class='lunar_event scrollable-container' id=" + day_event_array.date.slice(5, 10) + "><span class='scrollable-content'>[" + arabic_numbertext_to_nepali(index++) + "] ";
                             span_html += BS_MONTHS_NEP[month] + " " + arabic_numbertext_to_nepali(parseInt(date + 1)) + " गते";
                             var ad_date = new Date(convert_bs_to_ad(query_year, month + 1, date + 1));
                             var day_of_week = NEPALI_DAYS_ABBR[ad_date.getDay()];
@@ -175,7 +175,7 @@ function show_lunar_event() {
                             has_events = true;
                         }
                         if (has_events) {
-                            span_html += "</span>";
+                            span_html += "</span></span>";
                         }
                     }
                     catch(err) {
@@ -233,7 +233,7 @@ function show_public_holiday() {
                 key_list = key.split("-");
                 console.log(key);
                 if(!isNaN(key_list[0]) && !isNaN(key_list[1])) {
-                    span_html += "<span id='" + key + "_NP' class=" + public_holidays[query_year][key][1] + ">";
+                    span_html += "<span id='" + key + "_NP' class='" + public_holidays[query_year][key][1] + " scrollable-container'><span class='scrollable-content'>";
                     span_html += "[" + arabic_numbertext_to_nepali(index) + "] ";
                     span_html += BS_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " गते";
                     var ad_date = new Date(convert_bs_to_ad(query_year, parseInt(key_list[0]), parseInt(key_list[1])));
@@ -245,9 +245,9 @@ function show_public_holiday() {
                         span_html += "<span class='weekday'> (" + day_of_week + ")</span>";
                     }
                     span_html += " - " + public_holidays[query_year][key][3];
-                    span_html += "</span>";
+                    span_html += "</span></span>";
     
-                    span_html += "<span id='" + key + "_EN' class=" + public_holidays[query_year][key][1] + ">";
+                    span_html += "<span id='" + key + "_EN' class='" + public_holidays[query_year][key][1] + " scrollable-container'><span class='scrollable-content'>";
                     span_html += "[" + index + "] ";
                     span_html += BS_MONTHS_ENG[key_list[0] - 1] + " " + parseInt(key_list[1]);
                     var ad_date = new Date(convert_bs_to_ad(query_year, parseInt(key_list[0]), parseInt(key_list[1])));
@@ -259,18 +259,18 @@ function show_public_holiday() {
                         span_html += "<span class='weekday'> (" + day_of_week + ")</span>";
                     }
                     span_html += " - " + public_holidays[query_year][key][0];
-                    span_html += "</span><br />";
+                    span_html += "</span></span><br />";
                 }
                 else {
-                    span_html += "<span id='" + key + "_NP' class=" + public_holidays[query_year][key][1] + ">";
+                    span_html += "<span id='" + key + "_NP' class='" + public_holidays[query_year][key][1] + " scrollable-container'><span class='scrollable-content'>";
                     span_html += "[" + arabic_numbertext_to_nepali(index) + "] ";
                     span_html += public_holidays[query_year][key][3] + " मनाउने दिन";
-                    span_html += "</span>";
+                    span_html += "</span></span>";
     
-                    span_html += "<span id='" + key + "_EN' class=" + public_holidays[query_year][key][1] + ">";
+                    span_html += "<span id='" + key + "_EN' class='" + public_holidays[query_year][key][1] + " scrollable-container'><span class='scrollable-content'>";
                     span_html += "[" + index + "] ";
                     span_html += public_holidays[query_year][key][0];
-                    span_html += "</span><br />";
+                    span_html += "</span></span><br />";
                 }
                 index++;
             });
@@ -318,17 +318,17 @@ function show_international_event() {
             internat_events_keys_list.forEach(key => {
                 key_list = key.split("-");
                 internat_events["data"][key][0].split("/").forEach(event => {
-                    span_html += "<span id='" + key + "_EN'>[" + index + "] ";
+                    span_html += "<span id='" + key + "_EN' class='scrollable-container'><span class='scrollable-content'>[" + index + "] ";
                     span_html += AD_MONTHS[key_list[0] - 1] + " " + parseInt(key_list[1]) + " - ";
                     span_html += event;
-                    span_html += "</span>";
+                    span_html += "</span></span>";
                 });
 
                 internat_events["data"][key][1].split("/").forEach(event => {
-                    span_html += "<span id='" + key + "_NP'>[" + arabic_numbertext_to_nepali(index) + "] ";
+                    span_html += "<span id='" + key + "_NP' class='scrollable-container'><span class='scrollable-content'>[" + arabic_numbertext_to_nepali(index) + "] ";
                     span_html += AD_MONTHS_NEP[key_list[0] - 1] + " " + arabic_numbertext_to_nepali(parseInt(key_list[1])) + " - ";
                     span_html += event;
-                    span_html += "</span>";
+                    span_html += "</span></span>";
                 });
                 span_html += "<br />";
 
@@ -393,6 +393,7 @@ function show_content(option = view) {
             view = 3;
     }
     scroll_to_today();
+    checkOverflow();
 }
 
 document.getElementById("year").value = DEFAULT_YEAR;

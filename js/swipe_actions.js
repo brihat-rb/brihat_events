@@ -23,14 +23,26 @@ function handleTouchStart(evt) {
 };
 
 function previous() {
-    if (view > 0) {
+    if (view == 1) {
+        show_content(4);
+    }
+    else if (view > 0) {
         show_content(view - 1);
+    }
+    else {
+        show_content(1);    
     }
 }
 
 function next() {
-    if (view < 4) {
+    if (view == 4) {
+        show_content(1);
+    }
+    else if (view < 4) {
         show_content(view + 1);
+    }
+    else {
+        show_content(4);    
     }
 }
 
